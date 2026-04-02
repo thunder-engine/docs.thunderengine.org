@@ -1,0 +1,1078 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="ThreadPool" href="threadpool.html"><link rel="prev" title="ObjectSystem" href="objectsystem.html">
+
+    <!-- Generated with Sphinx 7.4.7 and Furo 2025.12.19 -->
+        <title>TString - Thunder Engine documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Thunder Engine  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  <span class="sidebar-brand-text">Thunder Engine  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Thunder Engine</span></p>
+<ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../basics/index.html">Getting Started</a><input aria-label="Toggle navigation of Getting Started" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../basics/install.html">Install Thunder Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basics/editor.html">World Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basics/features.html">Thunder Engine Features</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../editor/index.html">World Editor</a><input aria-label="Toggle navigation of World Editor" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../editor/viewport.html">Viewport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor/properties.html">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor/content.html">Content Browser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor/hierarchy.html">Hierarchy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor/plugins.html">Plugin Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor/builder.html">Building Project</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rendering/index.html">Rendering</a><input aria-label="Toggle navigation of Rendering" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rendering/components/camera.html">Camera</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../rendering/geometry/index.html">Geometry</a><input aria-label="Toggle navigation of Geometry" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rendering/geometry/mesh.html">Mesh Resource</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rendering/geometry/meshrender.html">MeshRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rendering/geometry/skinnedmeshrender.html">SkinnedMeshRender</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rendering/lighting/index.html">Lighting</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../rendering/vfx/index.html">Visual Effects (VFX)</a><input aria-label="Toggle navigation of Visual Effects (VFX)" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rendering/vfx/editor.html">VFX Editor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rendering/vfx/custom_modules.html">Creating Custom Modules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rendering/pipeline.html">Graphics Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../audio/index.html">Audio</a><input aria-label="Toggle navigation of Audio" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../audio/resources/audioclip.html">AudioClip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../audio/components/audiosource.html">AudioSource</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../scripting/index.html">Scripting</a><input aria-label="Toggle navigation of Scripting" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/creating_scripts.html">Creating and Using Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/exporting_variables.html">Variables and Property Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/instantiating_prefabs.html">Instantiating Prefabs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/native_introspection.html">Native Introspection</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">API Reference</a><input aria-label="Toggle navigation of API Reference" checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="animation-module.html">Animation Module</a><input aria-label="Toggle navigation of Animation Module" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="animation.html">Animation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="propertyanimation.html">PropertyAnimation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="variantanimation.html">VariantAnimation</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="components-module.html">Components Module</a><input aria-label="Toggle navigation of Components Module" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="actor.html">Actor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="animator.html">Animator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arealight.html">AreaLight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="armature.html">Armature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="audiosource.html">AudioSource</a></li>
+<li class="toctree-l3"><a class="reference internal" href="baselight.html">BaseLight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="boxcollider.html">BoxCollider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="camera.html">Camera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capsulecollider.html">CapsuleCollider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="charactercontroller.html">CharacterController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="collider.html">Collider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="component.html">Component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="directlight.html">DirectLight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="effectrender.html">EffectRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="meshcollider.html">MeshCollider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="meshrender.html">MeshRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nativebehaviour.html">NativeBehaviour</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playerinput.html">PlayerInput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pointlight.html">PointLight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="postprocessvolume.html">PostProcessVolume</a></li>
+<li class="toctree-l3"><a class="reference internal" href="renderable.html">Renderable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rigidbody.html">RigidBody</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scene.html">Scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skinnedmeshrender.html">SkinnedMeshRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spherecollider.html">SphereCollider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spline.html">Spline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spotlight.html">SpotLight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spriterender.html">SpriteRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="textrender.html">TextRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tilemaprender.html">TileMapRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transform.html">Transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="volumecollider.html">VolumeCollider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="world.html">World</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="core-module.html">Core Module</a><input aria-label="Toggle navigation of Core Module" checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="bson.html">Bson</a></li>
+<li class="toctree-l3"><a class="reference internal" href="event.html">Event</a></li>
+<li class="toctree-l3"><a class="reference internal" href="json.html">Json</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metaenum.html">MetaEnum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metamethod.html">MetaMethod</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metaobject.html">MetaObject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metaproperty.html">MetaProperty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metatype.html">MetaType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="methodcallevent.html">MethodCallEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="object.html">Object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objectsystem.html">ObjectSystem</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">TString</a></li>
+<li class="toctree-l3"><a class="reference internal" href="threadpool.html">ThreadPool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="url.html">Url</a></li>
+<li class="toctree-l3"><a class="reference internal" href="variant.html">Variant</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="engine-module.html">Engine Module</a><input aria-label="Toggle navigation of Engine Module" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="commandbuffer.html">CommandBuffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="engine.html">Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gizmos.html">Gizmos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="input.html">Input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="log.html">Log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module.html">Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelinecontext.html">PipelineContext</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelinetask.html">PipelineTask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="system.html">System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timer.html">Timer</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="gui-module.html">Gui Module</a><input aria-label="Toggle navigation of Gui Module" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="abstractbutton.html">AbstractButton</a></li>
+<li class="toctree-l3"><a class="reference internal" href="button.html">Button</a></li>
+<li class="toctree-l3"><a class="reference internal" href="checkbox.html">CheckBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="floatinput.html">FloatInput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="foldout.html">Foldout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="frame.html">Frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="image.html">Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="label.html">Label</a></li>
+<li class="toctree-l3"><a class="reference internal" href="layout.html">Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lineedit.html">LineEdit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="menu.html">Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="progressbar.html">ProgressBar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="recttransform.html">RectTransform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stylesheet.html">StyleSheet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="switch.html">Switch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="toolbutton.html">ToolButton</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uidocument.html">UiDocument</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uiloader.html">UiLoader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="widget.html">Widget</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="math-module.html">Math Module</a><input aria-label="Toggle navigation of Math Module" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="aabbox.html">AABBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matrix3.html">Matrix3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matrix4.html">Matrix4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="obbox.html">OBBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plane.html">Plane</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quaternion.html">Quaternion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ray.html">Ray</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vector2.html">Vector2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vector3.html">Vector3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vector4.html">Vector4</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="resources-module.html">Resources Module</a><input aria-label="Toggle navigation of Resources Module" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="animationclip.html">AnimationClip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="animationstatemachine.html">AnimationStateMachine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="animationtrack.html">AnimationTrack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="audioclip.html">AudioClip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bone.html">Bone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="computebuffer.html">ComputeBuffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="computeinstance.html">ComputeInstance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="computeshader.html">ComputeShader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controlscheme.html">ControlScheme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="font.html">Font</a></li>
+<li class="toctree-l3"><a class="reference internal" href="map.html">Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="material.html">Material</a></li>
+<li class="toctree-l3"><a class="reference internal" href="materialinstance.html">MaterialInstance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mesh.html">Mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="meshgroup.html">MeshGroup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline.html">Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pose.html">Pose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="prefab.html">Prefab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rendertarget.html">RenderTarget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html">Resource</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sprite.html">Sprite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="text.html">Text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="texture.html">Texture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tilemap.html">TileMap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tileset.html">TileSet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="translator.html">Translator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="visualeffect.html">VisualEffect</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="assetconverter.html">AssetConverter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetconvertersettings.html">AssetConverterSettings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editortool.html">EditorTool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="physicmaterial.html">PhysicMaterial</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Get Involved</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../involved/index.html">Contribute Documentation</a><input aria-label="Toggle navigation of Contribute Documentation" class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../involved/documentation_guide.html">Documentation Writing Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../involved/style_guide.html">Documentation Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../involved/review_process.html">Documentation Review Process</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../involved/localization.html">Documentation Localization</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/reference/tstring.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="tstring">
+<span id="api-tstring"></span><h1>TString<a class="headerlink" href="#tstring" title="Link to this heading">¶</a></h1>
+<p>Inherited: None</p>
+<section id="description">
+<span id="api-tstring-description"></span><h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+</section>
+<section id="public-methods">
+<span id="api-tstring-public"></span><h2>Public Methods<a class="headerlink" href="#public-methods" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference internal" href="#api-tstring-4b025e96"><span class="std std-ref">TString</span></a> ()</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference internal" href="#api-tstring-1765ab8c"><span class="std std-ref">TString</span></a> (const ByteArray &amp; array)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference internal" href="#api-tstring-ecba6fd9"><span class="std std-ref">TString</span></a> (const char * str)</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference internal" href="#api-tstring-914607fb"><span class="std std-ref">TString</span></a> (const std::string &amp; str)</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference internal" href="#api-tstring-a416372b"><span class="std std-ref">TString</span></a> (int  n, const char  ch)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp;</p></td>
+<td><p><a class="reference internal" href="#api-tstring-d96340b2"><span class="std std-ref">append</span></a> (const TString &amp; str)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp;</p></td>
+<td><p><a class="reference internal" href="#api-tstring-b8f0de95"><span class="std std-ref">append</span></a> (const char * str)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp;</p></td>
+<td><p><a class="reference internal" href="#api-tstring-49d8c1b5"><span class="std std-ref">append</span></a> (const std::string &amp; str)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp;</p></td>
+<td><p><a class="reference internal" href="#api-tstring-f9253e4c"><span class="std std-ref">append</span></a> (const char  ch, int  n)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a></p></td>
+<td><p><a class="reference internal" href="#api-tstring-02675e9a"><span class="std std-ref">arg</span></a> (const TString &amp; arg1) const</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a></p></td>
+<td><p><a class="reference internal" href="#api-tstring-7ab5921d"><span class="std std-ref">arg</span></a> (const TString &amp; arg1, const TString &amp; arg2) const</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a></p></td>
+<td><p><a class="reference internal" href="#api-tstring-4f6b9e01"><span class="std std-ref">arg</span></a> (const TString &amp; arg1, const TString &amp; arg2, const TString &amp; arg3) const</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a></p></td>
+<td><p><a class="reference internal" href="#api-tstring-729b3a0e"><span class="std std-ref">arg</span></a> (const TString &amp; arg1, const TString &amp; arg2, const TString &amp; arg3, const TString &amp; arg4) const</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a></p></td>
+<td><p><a class="reference internal" href="#api-tstring-43d7c059"><span class="std std-ref">arg</span></a> (const TString &amp; arg1, const TString &amp; arg2, const TString &amp; arg3, const TString &amp; arg4, const TString &amp; arg5) const</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a></p></td>
+<td><p><a class="reference internal" href="#api-tstring-5dfc80b2"><span class="std std-ref">arg</span></a> (const TString &amp; arg1, const TString &amp; arg2, const TString &amp; arg3, const TString &amp; arg4, const TString &amp; arg5, const TString &amp; arg6) const</p></td>
+</tr>
+<tr class="row-even"><td><p>char</p></td>
+<td><p><a class="reference internal" href="#api-tstring-9607fec5"><span class="std std-ref">at</span></a> (int  position) const</p></td>
+</tr>
+<tr class="row-odd"><td><p>char</p></td>
+<td><p><a class="reference internal" href="#api-tstring-2e507694"><span class="std std-ref">back</span></a> () const</p></td>
+</tr>
+<tr class="row-even"><td><p>void</p></td>
+<td><p><a class="reference internal" href="#api-tstring-b01fac29"><span class="std std-ref">clear</span></a> ()</p></td>
+</tr>
+<tr class="row-odd"><td><p>int</p></td>
+<td><p><a class="reference internal" href="#api-tstring-c9607a13"><span class="std std-ref">compare</span></a> (const TString &amp; other) const</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p><a class="reference internal" href="#api-tstring-4e75c286"><span class="std std-ref">contains</span></a> (const TString &amp; str) const</p></td>
+</tr>
+<tr class="row-odd"><td><p>const char</p></td>
+<td><p><a class="reference internal" href="#api-tstring-904cf712"><span class="std std-ref">data</span></a> () const</p></td>
+</tr>
+<tr class="row-even"><td><p>char</p></td>
+<td><p><a class="reference internal" href="#api-tstring-a639c1d0"><span class="std std-ref">front</span></a> () const</p></td>
+</tr>
+<tr class="row-odd"><td><p>int</p></td>
+<td><p><a class="reference internal" href="#api-tstring-52681f3d"><span class="std std-ref">indexOf</span></a> (const TString &amp; str) const</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p><a class="reference internal" href="#api-tstring-d6be8c73"><span class="std std-ref">indexOf</span></a> (const char  ch) const</p></td>
+</tr>
+<tr class="row-odd"><td><p>bool</p></td>
+<td><p><a class="reference internal" href="#api-tstring-d1e5bfa9"><span class="std std-ref">isEmpty</span></a> () const</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p><a class="reference internal" href="#api-tstring-5d074c89"><span class="std std-ref">lastIndexOf</span></a> (const TString &amp; str) const</p></td>
+</tr>
+<tr class="row-odd"><td><p>int</p></td>
+<td><p><a class="reference internal" href="#api-tstring-a3d6814e"><span class="std std-ref">lastIndexOf</span></a> (const char  ch) const</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a></p></td>
+<td><p><a class="reference internal" href="#api-tstring-402db1ef"><span class="std std-ref">left</span></a> (int  n) const</p></td>
+</tr>
+<tr class="row-odd"><td><p>int</p></td>
+<td><p><a class="reference internal" href="#api-tstring-39ab24d7"><span class="std std-ref">length</span></a> () const</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a></p></td>
+<td><p><a class="reference internal" href="#api-tstring-138dc075"><span class="std std-ref">mid</span></a> (int  position, int  n) const</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp;</p></td>
+<td><p><a class="reference internal" href="#api-tstring-903de462"><span class="std std-ref">remove</span></a> (const TString &amp; str)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp;</p></td>
+<td><p><a class="reference internal" href="#api-tstring-036517cb"><span class="std std-ref">remove</span></a> (const char  ch)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp;</p></td>
+<td><p><a class="reference internal" href="#api-tstring-2c6d8e39"><span class="std std-ref">removeFirst</span></a> ()</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp;</p></td>
+<td><p><a class="reference internal" href="#api-tstring-e7398d51"><span class="std std-ref">removeLast</span></a> ()</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp;</p></td>
+<td><p><a class="reference internal" href="#api-tstring-310e7846"><span class="std std-ref">replace</span></a> (const TString &amp; before, const TString &amp; after)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp;</p></td>
+<td><p><a class="reference internal" href="#api-tstring-a69fc287"><span class="std std-ref">replace</span></a> (const char  before, const char  after)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a></p></td>
+<td><p><a class="reference internal" href="#api-tstring-54a90e32"><span class="std std-ref">right</span></a> (int  n) const</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a></p></td>
+<td><p><a class="reference internal" href="#api-tstring-05a8bc49"><span class="std std-ref">simplified</span></a> () const</p></td>
+</tr>
+<tr class="row-odd"><td><p>int</p></td>
+<td><p><a class="reference internal" href="#api-tstring-c04e3a18"><span class="std std-ref">size</span></a> () const</p></td>
+</tr>
+<tr class="row-even"><td><p>StringList</p></td>
+<td><p><a class="reference internal" href="#api-tstring-b570f3d4"><span class="std std-ref">split</span></a> (const TString &amp; sep) const</p></td>
+</tr>
+<tr class="row-odd"><td><p>StringList</p></td>
+<td><p><a class="reference internal" href="#api-tstring-a067398d"><span class="std std-ref">split</span></a> (const char  sep) const</p></td>
+</tr>
+<tr class="row-even"><td><p>float</p></td>
+<td><p><a class="reference internal" href="#api-tstring-6a7f5432"><span class="std std-ref">toFloat</span></a> () const</p></td>
+</tr>
+<tr class="row-odd"><td><p>int</p></td>
+<td><p><a class="reference internal" href="#api-tstring-3216d5fc"><span class="std std-ref">toInt</span></a> () const</p></td>
+</tr>
+<tr class="row-even"><td><p>size_t</p></td>
+<td><p><a class="reference internal" href="#api-tstring-980a271d"><span class="std std-ref">toLong</span></a> () const</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a></p></td>
+<td><p><a class="reference internal" href="#api-tstring-61fd3cea"><span class="std std-ref">toLower</span></a> () const</p></td>
+</tr>
+<tr class="row-even"><td><p>const std::string</p></td>
+<td><p><a class="reference internal" href="#api-tstring-2b3817fa"><span class="std std-ref">toStdString</span></a> () const</p></td>
+</tr>
+<tr class="row-odd"><td><p>std::wstring</p></td>
+<td><p><a class="reference internal" href="#api-tstring-65a4e30f"><span class="std std-ref">toStdWString</span></a> () const</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a></p></td>
+<td><p><a class="reference internal" href="#api-tstring-a35f72e0"><span class="std std-ref">toUpper</span></a> () const</p></td>
+</tr>
+<tr class="row-odd"><td><p>std::u32string</p></td>
+<td><p><a class="reference internal" href="#api-tstring-3107428f"><span class="std std-ref">toUtf32</span></a> () const</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a></p></td>
+<td><p><a class="reference internal" href="#api-tstring-e340d6a9"><span class="std std-ref">trimmed</span></a> () const</p></td>
+</tr>
+<tr class="row-odd"><td><p>bool</p></td>
+<td><p><a class="reference internal" href="#api-tstring-235169cb"><span class="std std-ref">operator!=</span></a> (const TString &amp; other) const</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a></p></td>
+<td><p><a class="reference internal" href="#api-tstring-ae9d0421"><span class="std std-ref">operator+</span></a> (char  ch) const</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a></p></td>
+<td><p><a class="reference internal" href="#api-tstring-f5834ba2"><span class="std std-ref">operator+</span></a> (const TString &amp; other) const</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a></p></td>
+<td><p><a class="reference internal" href="#api-tstring-7cb2f3a0"><span class="std std-ref">operator+</span></a> (const char * other) const</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a></p></td>
+<td><p><a class="reference internal" href="#api-tstring-d4635208"><span class="std std-ref">operator+</span></a> (const std::string &amp; other) const</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp;</p></td>
+<td><p><a class="reference internal" href="#api-tstring-469ad3f0"><span class="std std-ref">operator+=</span></a> (const TString &amp; other)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp;</p></td>
+<td><p><a class="reference internal" href="#api-tstring-453ac82e"><span class="std std-ref">operator+=</span></a> (const char  ch)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp;</p></td>
+<td><p><a class="reference internal" href="#api-tstring-fe69b45d"><span class="std std-ref">operator+=</span></a> (const char * str)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp;</p></td>
+<td><p><a class="reference internal" href="#api-tstring-e8d651c7"><span class="std std-ref">operator+=</span></a> (const std::string &amp; str)</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p><a class="reference internal" href="#api-tstring-385a671d"><span class="std std-ref">operator&lt;</span></a> (const TString &amp; other) const</p></td>
+</tr>
+<tr class="row-odd"><td><p>bool</p></td>
+<td><p><a class="reference internal" href="#api-tstring-aec47b62"><span class="std std-ref">operator==</span></a> (const TString &amp; other) const</p></td>
+</tr>
+<tr class="row-even"><td><p>char</p></td>
+<td><p><a class="reference internal" href="#api-tstring-5bcf4801"><span class="std std-ref">operator[]</span></a> (int  position)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="static-methods">
+<span id="api-tstring-static"></span><h2>Static Methods<a class="headerlink" href="#static-methods" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a></p></td>
+<td><p><a class="reference internal" href="#api-tstring-f43ba972"><span class="std std-ref">fromUtf32</span></a> (const std::u32string &amp; in)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a></p></td>
+<td><p><a class="reference internal" href="#api-tstring-f7b6a9d2"><span class="std std-ref">fromWc32</span></a> (uint32_t  unicode)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a></p></td>
+<td><p><a class="reference internal" href="#api-tstring-90857c1b"><span class="std std-ref">fromWString</span></a> (const std::wstring &amp; in)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a></p></td>
+<td><p><a class="reference internal" href="#api-tstring-3b42c591"><span class="std std-ref">join</span></a> (const StringList &amp; list, const char * separator)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a></p></td>
+<td><p><a class="reference internal" href="#api-tstring-8763ef41"><span class="std std-ref">number</span></a> (float  in)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a></p></td>
+<td><p><a class="reference internal" href="#api-tstring-3f0cd6ae"><span class="std std-ref">number</span></a> (int  in)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a></p></td>
+<td><p><a class="reference internal" href="#api-tstring-a390c14f"><span class="std std-ref">number</span></a> (long long  in)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="methods-description">
+<span id="api-tstring-methods"></span><h2>Methods Description<a class="headerlink" href="#methods-description" title="Link to this heading">¶</a></h2>
+<p id="api-tstring-4b025e96"><strong>TString::TString</strong> ()</p>
+<p>Constructs an empty string.</p>
+<hr class="docutils" />
+<p id="api-tstring-1765ab8c"><strong>TString::TString</strong> (ByteArray &amp; <em>array</em>)</p>
+<p>Constructs a string from a byte array.</p>
+<hr class="docutils" />
+<p id="api-tstring-ecba6fd9"><strong>TString::TString</strong> (char * <em>str</em>)</p>
+<p>Constructs a string from a C-style null-terminated string.</p>
+<hr class="docutils" />
+<p id="api-tstring-914607fb"><strong>TString::TString</strong> (std::string &amp; <em>str</em>)</p>
+<p>Constructs a string from a standard string.</p>
+<hr class="docutils" />
+<p id="api-tstring-a416372b"><strong>TString::TString</strong> (int  <em>n</em>, char  <em>ch</em>)</p>
+<p>Constructs a string of the given <em>n</em> size with every character set to ch.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-d96340b2">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <strong>TString::append</strong> (<a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>str</em>)</p>
+</div></blockquote>
+<p>Appends the string <em>str</em> onto the end of this string.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-b8f0de95">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <strong>TString::append</strong> (char * <em>str</em>)</p>
+</div></blockquote>
+<p>Appends the string <em>str</em> to this string. The given const char pointer is converted to Unicode.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-49d8c1b5">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <strong>TString::append</strong> (std::string &amp; <em>str</em>)</p>
+</div></blockquote>
+<p>Appends the standard string <em>str</em> onto the end of this string.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-f9253e4c">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <strong>TString::append</strong> (char  <em>ch</em>, int  <em>n</em>)</p>
+</div></blockquote>
+<p>Appends a string of the given <em>n</em> size with every character set to ch.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-02675e9a">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a>  <strong>TString::arg</strong> (<a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>arg1</em>) const</p>
+</div></blockquote>
+<p>Returns a copy of this string with the lowest-numbered place-marker %1 replaced by string arg1.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-7ab5921d">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a>  <strong>TString::arg</strong> (<a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>arg1</em>, <a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>arg2</em>) const</p>
+</div></blockquote>
+<p>Returns a copy of this string with the lowest-numbered place-marker %1, %2 replaced by string <em>arg1</em> and arg2.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-4f6b9e01">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a>  <strong>TString::arg</strong> (<a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>arg1</em>, <a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>arg2</em>, <a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>arg3</em>) const</p>
+</div></blockquote>
+<p>Returns a copy of this string with the lowest-numbered place-marker %1, %2, %3 replaced by string arg1, <em>arg2</em> and arg3.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-729b3a0e">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a>  <strong>TString::arg</strong> (<a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>arg1</em>, <a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>arg2</em>, <a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>arg3</em>, <a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>arg4</em>) const</p>
+</div></blockquote>
+<p>Returns a copy of this string with the lowest-numbered place-marker %1, %2, %3, %4 replaced by string arg1, arg2, <em>arg3</em> and arg4.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-43d7c059">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a>  <strong>TString::arg</strong> (<a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>arg1</em>, <a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>arg2</em>, <a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>arg3</em>, <a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>arg4</em>, <a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>arg5</em>) const</p>
+</div></blockquote>
+<p>Returns a copy of this string with the lowest-numbered place-marker %1, %2, %3, %4, %5 replaced by string arg1, arg2, arg3, <em>arg4</em> and arg5.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-5dfc80b2">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a>  <strong>TString::arg</strong> (<a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>arg1</em>, <a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>arg2</em>, <a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>arg3</em>, <a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>arg4</em>, <a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>arg5</em>, <a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>arg6</em>) const</p>
+</div></blockquote>
+<p>Returns a copy of this string with the lowest-numbered place-marker %1, %2, %3, %4, %5, %6 replaced by string arg1, arg2, arg3, arg4, <em>arg5</em> and arg6.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-9607fec5">
+<div><p>char <strong>TString::at</strong> (int  <em>position</em>) const</p>
+</div></blockquote>
+<p>Returns the character at the given index <em>position</em> in the string.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-2e507694">
+<div><p>char <strong>TString::back</strong> () const</p>
+</div></blockquote>
+<p>Returns the last character in the string.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-b01fac29">
+<div><p>void <strong>TString::clear</strong> ()</p>
+</div></blockquote>
+<p>Clears the contents of the string and makes it empty.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-c9607a13">
+<div><p>int <strong>TString::compare</strong> (<a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>other</em>) const</p>
+</div></blockquote>
+<p>Compares this string with <em>other</em> string and returns a negative integer if this is less than other, a positive integer if it is greater than other, and zero if they are equal.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-4e75c286">
+<div><p>bool <strong>TString::contains</strong> (<a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>str</em>) const</p>
+</div></blockquote>
+<p>Returns true if this string contains an occurrence of the string str; otherwise returns false.</p>
+<hr class="docutils" />
+<p id="api-tstring-904cf712">const char <strong>TString::data</strong> () const</p>
+<p>Returns a pointer to the data stored in the TString.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-f43ba972">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a>  <strong>TString::fromUtf32</strong> (std::u32string &amp; <em>in</em>)</p>
+</div></blockquote>
+<p>Returns a copy of the <em>in</em> string. The given string is assumed to be encoded <em>in</em> UTF-32.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-f7b6a9d2">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a>  <strong>TString::fromWc32</strong> (uint32_t  <em>unicode</em>)</p>
+</div></blockquote>
+<p>Returns a TString initialized with the first size characters of the Unicode string <em>unicode</em> (encoded as UTF-32).</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-90857c1b">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a>  <strong>TString::fromWString</strong> (std::wstring &amp; <em>in</em>)</p>
+</div></blockquote>
+<p>Returns a copy of the <em>in</em> string. The given string is assumed to be encoded <em>in</em> utf16 if the size of wchar_t is 2 bytes (e.g. on windows).</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-a639c1d0">
+<div><p>char <strong>TString::front</strong> () const</p>
+</div></blockquote>
+<p>Returns a reference to the first character in the string.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-52681f3d">
+<div><p>int <strong>TString::indexOf</strong> (<a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>str</em>) const</p>
+</div></blockquote>
+<p>Returns the index position of the first occurrence of the string <em>str</em> in this string. Returns -1 if <em>str</em> is not found.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-d6be8c73">
+<div><p>int <strong>TString::indexOf</strong> (char  <em>ch</em>) const</p>
+</div></blockquote>
+<p>Returns the index position of the first occurrence of the character <em>ch</em> in this string. Returns -1 if <em>ch</em> is not found.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-d1e5bfa9">
+<div><p>bool <strong>TString::isEmpty</strong> () const</p>
+</div></blockquote>
+<p>Returns true if string is empty; otherwise returns false.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-3b42c591">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a>  <strong>TString::join</strong> (StringList &amp; <em>list</em>, char * <em>separator</em>)</p>
+</div></blockquote>
+<p>Joins all the string <em>list</em> strings into a single string with each element separated by the given <em>separator</em> (which can be an empty string).</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-5d074c89">
+<div><p>int <strong>TString::lastIndexOf</strong> (<a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>str</em>) const</p>
+</div></blockquote>
+<p>Returns the index position of the last occurrence of the string <em>str</em> in this string, searching backward from index position from.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-a3d6814e">
+<div><p>int <strong>TString::lastIndexOf</strong> (char  <em>ch</em>) const</p>
+</div></blockquote>
+<p>Returns the index position of the last occurrence of the character <em>ch</em> in this string, searching backward from index position from.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-402db1ef">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a>  <strong>TString::left</strong> (int  <em>n</em>) const</p>
+</div></blockquote>
+<p>Returns a substring that contains the <em>n</em> leftmost characters of this string.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-39ab24d7">
+<div><p>int <strong>TString::length</strong> () const</p>
+</div></blockquote>
+<p>Returns the number of characters in this string.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-138dc075">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a>  <strong>TString::mid</strong> (int  <em>position</em>, int  <em>n</em>) const</p>
+</div></blockquote>
+<p>Returns a string that contains <em>n</em> characters of this string, starting at the specified <em>position</em> index up to, but not including.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-8763ef41">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a>  <strong>TString::number</strong> (float  <em>in</em>)</p>
+</div></blockquote>
+<p>Returns a string representing the floating-point number in.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-3f0cd6ae">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a>  <strong>TString::number</strong> (int  <em>in</em>)</p>
+</div></blockquote>
+<p>Returns a string representing the integer number in.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-a390c14f">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a>  <strong>TString::number</strong> (long  <em>in</em>)</p>
+</div></blockquote>
+<p>Returns a string representing the long integer number in.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-903de462">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <strong>TString::remove</strong> (<a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>str</em>)</p>
+</div></blockquote>
+<p>Removes every occurrence of the given <em>str</em> string in this string, and returns a reference to this string.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-036517cb">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <strong>TString::remove</strong> (char  <em>ch</em>)</p>
+</div></blockquote>
+<p>Removes every occurrence of the character <em>ch</em> in this string, and returns a reference to this string.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-2c6d8e39">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <strong>TString::removeFirst</strong> ()</p>
+</div></blockquote>
+<p>Removes the first character in this string. If the string is empty, this function does nothing.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-e7398d51">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <strong>TString::removeLast</strong> ()</p>
+</div></blockquote>
+<p>Removes the last character in this string. If the string is empty, this function does nothing.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-310e7846">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <strong>TString::replace</strong> (<a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>before</em>, <a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>after</em>)</p>
+</div></blockquote>
+<p>Replaces every occurrence of the string <em>before</em> with the string <em>after</em> and returns a reference to this string.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-a69fc287">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <strong>TString::replace</strong> (char  <em>before</em>, char  <em>after</em>)</p>
+</div></blockquote>
+<p>Replaces every occurrence of the character <em>before</em> with the character <em>after</em> and returns a reference to this string.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-54a90e32">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a>  <strong>TString::right</strong> (int  <em>n</em>) const</p>
+</div></blockquote>
+<p>Returns a substring that contains the <em>n</em> rightmost characters of the string.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-05a8bc49">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a>  <strong>TString::simplified</strong> () const</p>
+</div></blockquote>
+<p>Returns a string that has whitespace removed from the start and the end, and that has each sequence of internal whitespace replaced with a single space.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-c04e3a18">
+<div><p>int <strong>TString::size</strong> () const</p>
+</div></blockquote>
+<p>Returns the number of characters in this string.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-b570f3d4">
+<div><p>StringList <strong>TString::split</strong> (<a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>sep</em>) const</p>
+</div></blockquote>
+<p>Splits the string into substrings wherever <em>sep</em> occurs, and returns the list of those strings.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-a067398d">
+<div><p>StringList <strong>TString::split</strong> (char  <em>sep</em>) const</p>
+</div></blockquote>
+<p>Splits the string into substrings wherever <em>sep</em> occurs, and returns the list of those strings.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-6a7f5432">
+<div><p>float <strong>TString::toFloat</strong> () const</p>
+</div></blockquote>
+<p>Returns the string converted to a float value.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-3216d5fc">
+<div><p>int <strong>TString::toInt</strong> () const</p>
+</div></blockquote>
+<p>Returns the string converted to an int. Returns 0 if the conversion fails.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-980a271d">
+<div><p>size_t <strong>TString::toLong</strong> () const</p>
+</div></blockquote>
+<p>Returns the string converted to a long. Returns 0 if the conversion fails.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-61fd3cea">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a>  <strong>TString::toLower</strong> () const</p>
+</div></blockquote>
+<p>Returns a lowercase copy of the string.</p>
+<hr class="docutils" />
+<p id="api-tstring-2b3817fa">const std::string <strong>TString::toStdString</strong> () const</p>
+<p>Returns a std::string object with the data contained in this TString.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-65a4e30f">
+<div><p>std::wstring <strong>TString::toStdWString</strong> () const</p>
+</div></blockquote>
+<p>Returns a std::wstring object with the data contained in this TString.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-a35f72e0">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a>  <strong>TString::toUpper</strong> () const</p>
+</div></blockquote>
+<p>Returns an uppercase copy of the string.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-3107428f">
+<div><p>std::u32string <strong>TString::toUtf32</strong> () const</p>
+</div></blockquote>
+<p>Returns a std::u32string object with the data contained in this TString.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-e340d6a9">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a>  <strong>TString::trimmed</strong> () const</p>
+</div></blockquote>
+<p>Returns a string that has whitespace removed from the start and the end. This includes the ASCII characters ‘t’, ‘n’, ‘v’, ‘f’, ‘r’, and ‘ ‘.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-235169cb">
+<div><p>bool <strong>TString::operator!=</strong> (<a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>other</em>) const</p>
+</div></blockquote>
+<p>Returns true if this string is NOT equal to other; otherwise returns false.</p>
+<p>The comparison is case-sensitive.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-ae9d0421">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a>  <strong>TString::operator+</strong> (char  <em>ch</em>) const</p>
+</div></blockquote>
+<p>Returns a string that is the result of concatenating this string and <em>ch</em> character.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-f5834ba2">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a>  <strong>TString::operator+</strong> (<a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>other</em>) const</p>
+</div></blockquote>
+<p>Returns a string that is the result of concatenating this string and other.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-7cb2f3a0">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a>  <strong>TString::operator+</strong> (char * <em>other</em>) const</p>
+</div></blockquote>
+<p>Returns a string that is the result of concatenating this string and null terminated <em>other</em> charcter string.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-d4635208">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a>  <strong>TString::operator+</strong> (std::string &amp; <em>other</em>) const</p>
+</div></blockquote>
+<p>Returns a string that is the result of concatenating this string and <em>other</em> standard string.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-469ad3f0">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <strong>TString::operator+=</strong> (<a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>other</em>)</p>
+</div></blockquote>
+<p>Appends the string <em>other</em> onto the end of this string and returns a reference to this string.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-453ac82e">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <strong>TString::operator+=</strong> (char  <em>ch</em>)</p>
+</div></blockquote>
+<p>Appends the character <em>ch</em> to this string.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-fe69b45d">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <strong>TString::operator+=</strong> (char * <em>str</em>)</p>
+</div></blockquote>
+<p>Appends the string <em>str</em> to this string. The const char pointer is converted to Unicode using the fromUtf8() function.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-e8d651c7">
+<div><p><a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <strong>TString::operator+=</strong> (std::string &amp; <em>str</em>)</p>
+</div></blockquote>
+<p>Appends the standard string <em>str</em> to this string.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-385a671d">
+<div><p>bool <strong>TString::operator&lt;</strong> (<a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>other</em>) const</p>
+</div></blockquote>
+<p>Returns true if this is lexically less than other; otherwise returns false.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-aec47b62">
+<div><p>bool <strong>TString::operator==</strong> (<a class="reference internal" href="#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>other</em>) const</p>
+</div></blockquote>
+<p>Returns true if this string is equal to other; otherwise returns false.</p>
+<p>The comparison is case-sensitive.</p>
+<hr class="docutils" />
+<blockquote id="api-tstring-5bcf4801">
+<div><p>char <strong>TString::operator[]</strong> (int  <em>position</em>)</p>
+</div></blockquote>
+<p>Returns the character at the specified <em>position</em> in the string as a modifiable reference.</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="threadpool.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">ThreadPool</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="objectsystem.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">ObjectSystem</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, Thunder Engine
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">TString</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#public-methods">Public Methods</a></li>
+<li><a class="reference internal" href="#static-methods">Static Methods</a></li>
+<li><a class="reference internal" href="#methods-description">Methods Description</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    </body>
+</html>

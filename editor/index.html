@@ -1,1048 +1,445 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Viewport" href="viewport.html"><link rel="prev" title="Thunder Engine Features" href="../basics/features.html">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>World Editor &mdash; Thunder Engine  documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+    <!-- Generated with Sphinx 7.4.7 and Furo 2025.12.19 -->
+        <title>World Editor - Thunder Engine documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-    <script src="../_static/js/theme.js"></script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Viewport" href="viewport.html" />
-    <link rel="prev" title="Thunder Engine Features" href="../basics/features.html" /> 
-</head>
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
 
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> Thunder Engine
-          </a>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Thunder Engine</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Getting Started</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../basics/install.html">Install Thunder Engine</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../basics/install.html#building-engine-from-the-source">Building engine from the source</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../basics/install.html#getting-source-code">Getting Source Code</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../basics/install.html#building-for-windows">Building for Windows</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../basics/install.html#building-for-os-x">Building for OS X</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../basics/install.html#building-for-linux">Building for Linux</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../basics/start.html">World Editor</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../basics/start.html#installation-path">Installation Path</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../basics/start.html#welcome-screen">Welcome Screen</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../basics/start.html#creating-projects">Creating Projects</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../basics/start.html#importing-projects">Importing Projects</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../basics/start.html#further-exploration">Further Exploration</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../basics/features.html">Thunder Engine Features</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../basics/features.html#supported-platforms">Supported Platforms</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../basics/features.html#engine">Engine</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../basics/features.html#render">Render</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../basics/features.html#scripting">Scripting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../basics/features.html#animation">Animation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../basics/features.html#audio">Audio</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../basics/features.html#physics-engine">Physics Engine</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../basics/features.html#set-of-tools">Set of Tools</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">World Editor</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#workspace-management">Workspace Management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#main-areas">Main Areas</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#editor-capabilities">Editor Capabilities</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="viewport.html">Viewport</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="viewport.html#creation-selection-objects">Creation/Selection Objects</a></li>
-<li class="toctree-l4"><a class="reference internal" href="viewport.html#toolbar">Toolbar</a></li>
-<li class="toctree-l4"><a class="reference internal" href="viewport.html#positioning-actors">Positioning Actors</a></li>
-<li class="toctree-l4"><a class="reference internal" href="viewport.html#key-scheme">Key Scheme</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="properties.html">Properties</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="properties.html#asset-properties">Asset Properties</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="content.html">Content Browser</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="content.html#creating-new-assets">Creating New Assets</a></li>
-<li class="toctree-l4"><a class="reference internal" href="content.html#importing-assets">Importing Assets</a></li>
-<li class="toctree-l4"><a class="reference internal" href="content.html#opening-assets">Opening Assets</a></li>
-<li class="toctree-l4"><a class="reference internal" href="content.html#filtering-content">Filtering Content</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="hierarchy.html">Hierarchy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plugins.html">Plugin Managemer</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="plugins.html#installing-plugins">Installing Plugins</a></li>
-<li class="toctree-l4"><a class="reference internal" href="plugins.html#managing-installed-plugins">Managing Installed Plugins</a></li>
-<li class="toctree-l4"><a class="reference internal" href="plugins.html#plugin-configuration">Plugin Configuration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="plugins.html#embedded-editors-and-plugins">Embedded Editors and Plugins</a></li>
-<li class="toctree-l4"><a class="reference internal" href="plugins.html#plugin-development">Plugin Development</a></li>
-<li class="toctree-l4"><a class="reference internal" href="plugins.html#conclusion">Conclusion</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="builder.html">Building Project</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="builder.html#builder-tool">Builder Tool</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../lighting/index.html">Lighting</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../lighting/index.html#lighting-overview">Lighting Overview</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../rendering/index.html">Graphics Pipeline</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../rendering/index.html#graphics-pipeline-entities">Graphics Pipeline Entities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rendering/index.html#custom-tasks">Custom Tasks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rendering/index.html#editor-integration">Editor Integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rendering/index.html#available-pipelinetasks">Available PipelineTasks</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../vfx/index.html">Visual Effects (VFX)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../vfx/editor.html">VFX Editor</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../vfx/editor.html#introduction">Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../vfx/editor.html#getting-started-with-the-vfx-editor">Getting Started with the VFX Editor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../vfx/editor.html#creating-a-new-effect">Creating a New Effect</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../vfx/editor.html#cascade-of-particle-modifiers">Cascade of Particle Modifiers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../vfx/editor.html#id1">Cascade of Particle Modifiers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../vfx/editor.html#adding-modifiers-to-the-cascade">Adding Modifiers to the Cascade</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../vfx/custom_modules.html">Creating Custom Modules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../vfx/custom_modules.html#introduction">Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../vfx/custom_modules.html#creating-a-custom-module-using-xml">Creating a Custom Module Using XML</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../vfx/custom_modules.html#available-operations">Available Operations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../vfx/custom_modules.html#parameter-spaces">Parameter Spaces</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../vfx/custom_modules.html#integrating-a-custom-module-into-the-editor">Integrating a Custom Module into the Editor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../vfx/custom_modules.html#conclusion">Conclusion</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../scripting/index.html">Scripting</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../scripting/overview.html">Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../scripting/overview.html#actor">Actor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../scripting/overview.html#components">Components</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../scripting/overview.html#property">Property</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../scripting/overview.html#signals-and-slots">Signals and Slots</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../scripting/overview.html#resource">Resource</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../scripting/creating_scripts.html">Creating and Using Scripts</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../scripting/creating_scripts.html#creating-scripts">Creating Scripts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../scripting/creating_scripts.html#script-file-content">Script File Content</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../scripting/creating_scripts.html#controlling-actors">Controlling Actors</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../scripting/exporting_variables.html">Variables and Property Editor</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../scripting/exporting_variables.html#object-reference-properties">Object Reference Properties</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../scripting/instantiating_prefabs.html">Instantiating Prefabs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../scripting/instantiating_prefabs.html#let-s-get-started">Let’s Get Started</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../scripting/instantiating_prefabs.html#creating-structures">Creating Structures</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../scripting/native_introspection.html">Native Introspection</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../scripting/native_introspection.html#meta-object">Meta Object</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../scripting/native_introspection.html#native-properties">Native Properties</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../scripting/native_introspection.html#native-methods">Native Methods</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../scripting/native_introspection.html#native-signals-and-slots">Native Signals and Slots</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../reference/animation-module.html">Animation Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../reference/animation.html">Animation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/animation.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/animation.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/animation.html#public-enums">Public Enums</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/animation.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/animation.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/propertyanimation.html">PropertyAnimation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/propertyanimation.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/propertyanimation.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/propertyanimation.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/propertyanimation.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/variantanimation.html">VariantAnimation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/variantanimation.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/variantanimation.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/variantanimation.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/variantanimation.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../reference/components-module.html">Components Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../reference/actor.html">Actor</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/actor.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/actor.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/actor.html#public-enums">Public Enums</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/actor.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/actor.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/animator.html">Animator</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/animator.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/animator.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/animator.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/animator.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/arealight.html">AreaLight</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/arealight.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/arealight.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/arealight.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/arealight.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/armature.html">Armature</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/armature.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/armature.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/armature.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/armature.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/audiosource.html">AudioSource</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/audiosource.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/audiosource.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/audiosource.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/audiosource.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/baselight.html">BaseLight</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/baselight.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/baselight.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/baselight.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/baselight.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/boxcollider.html">BoxCollider</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/boxcollider.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/boxcollider.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/boxcollider.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/boxcollider.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/camera.html">Camera</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/camera.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/camera.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/camera.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/camera.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/capsulecollider.html">CapsuleCollider</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/capsulecollider.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/capsulecollider.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/capsulecollider.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/capsulecollider.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/charactercontroller.html">CharacterController</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/charactercontroller.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/charactercontroller.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/charactercontroller.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/charactercontroller.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/collider.html">Collider</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/collider.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/collider.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/collider.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/collider.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/component.html">Component</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/component.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/component.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/component.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/component.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/directlight.html">DirectLight</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/directlight.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/directlight.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/directlight.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/directlight.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/effectrender.html">EffectRender</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/effectrender.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/effectrender.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/effectrender.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/effectrender.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/meshcollider.html">MeshCollider</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/meshcollider.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/meshcollider.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/meshcollider.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/meshcollider.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/meshrender.html">MeshRender</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/meshrender.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/meshrender.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/meshrender.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/meshrender.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/nativebehaviour.html">NativeBehaviour</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/nativebehaviour.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/nativebehaviour.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/nativebehaviour.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/nativebehaviour.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/playerinput.html">PlayerInput</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/playerinput.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/playerinput.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/playerinput.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/playerinput.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/pointlight.html">PointLight</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/pointlight.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/pointlight.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/pointlight.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/pointlight.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/postprocessvolume.html">PostProcessVolume</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/postprocessvolume.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/postprocessvolume.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/postprocessvolume.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/postprocessvolume.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/renderable.html">Renderable</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/renderable.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/renderable.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/renderable.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/renderable.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/rigidbody.html">RigidBody</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/rigidbody.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/rigidbody.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/rigidbody.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/rigidbody.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/scene.html">Scene</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/scene.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/scene.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/scene.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/scene.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/skinnedmeshrender.html">SkinnedMeshRender</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/skinnedmeshrender.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/skinnedmeshrender.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/skinnedmeshrender.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/skinnedmeshrender.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/spherecollider.html">SphereCollider</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/spherecollider.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/spherecollider.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/spherecollider.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/spherecollider.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/spotlight.html">SpotLight</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/spotlight.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/spotlight.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/spotlight.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/spotlight.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/spriterender.html">SpriteRender</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/spriterender.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/spriterender.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/spriterender.html#public-enums">Public Enums</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/spriterender.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/spriterender.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/textrender.html">TextRender</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/textrender.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/textrender.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/textrender.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/textrender.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/tilemaprender.html">TileMapRender</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/tilemaprender.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/tilemaprender.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/tilemaprender.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/tilemaprender.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/transform.html">Transform</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/transform.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/transform.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/transform.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/transform.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/volumecollider.html">VolumeCollider</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/volumecollider.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/volumecollider.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/volumecollider.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/volumecollider.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/world.html">World</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/world.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/world.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/world.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/world.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../reference/core-module.html">Core Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../reference/event.html">Event</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/event.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/event.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/event.html#public-enums">Public Enums</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/event.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/event.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/json.html">Json</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/json.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/json.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/json.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/json.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/metaenum.html">MetaEnum</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/metaenum.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/metaenum.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/metaenum.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/metaenum.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/metamethod.html">MetaMethod</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/metamethod.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/metamethod.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/metamethod.html#public-enums">Public Enums</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/metamethod.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/metamethod.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/metaobject.html">MetaObject</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/metaobject.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/metaobject.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/metaobject.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/metaobject.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/metaproperty.html">MetaProperty</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/metaproperty.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/metaproperty.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/metaproperty.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/metaproperty.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/metatype.html">MetaType</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/metatype.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/metatype.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/metatype.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/metatype.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/methodcallevent.html">MethodCallEvent</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/methodcallevent.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/methodcallevent.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/methodcallevent.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/methodcallevent.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/object.html">Object</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/object.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/object.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/object.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/object.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/objectsystem.html">ObjectSystem</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/objectsystem.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/objectsystem.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/objectsystem.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/objectsystem.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/variant.html">Variant</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/variant.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/variant.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/variant.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/variant.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../reference/engine-module.html">Engine Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../reference/commandbuffer.html">CommandBuffer</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/commandbuffer.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/commandbuffer.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/commandbuffer.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/commandbuffer.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/engine.html">Engine</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/engine.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/engine.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/engine.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/engine.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/file.html">File</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/file.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/file.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/file.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/file.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/gizmos.html">Gizmos</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/gizmos.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/gizmos.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/gizmos.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/gizmos.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/input.html">Input</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/input.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/input.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/input.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/input.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/log.html">Log</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/log.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/log.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/log.html#public-enums">Public Enums</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/log.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/log.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/module.html">Module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/module.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/module.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/module.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/module.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/pipelinecontext.html">PipelineContext</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/pipelinecontext.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/pipelinecontext.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/pipelinecontext.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/pipelinecontext.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/pipelinetask.html">PipelineTask</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/pipelinetask.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/pipelinetask.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/pipelinetask.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/pipelinetask.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/system.html">System</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/system.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/system.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/system.html#public-enums">Public Enums</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/system.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/system.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/timer.html">Timer</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/timer.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/timer.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/timer.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/timer.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../reference/gui-module.html">Gui Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../reference/abstractbutton.html">AbstractButton</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/abstractbutton.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/abstractbutton.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/abstractbutton.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/abstractbutton.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/button.html">Button</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/button.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/button.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/button.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/button.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/checkbox.html">CheckBox</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/checkbox.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/checkbox.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/checkbox.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/checkbox.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/floatinput.html">FloatInput</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/floatinput.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/floatinput.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/floatinput.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/floatinput.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/foldout.html">Foldout</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/foldout.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/foldout.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/foldout.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/foldout.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/frame.html">Frame</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/frame.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/frame.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/frame.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/frame.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/image.html">Image</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/image.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/image.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/image.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/image.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/label.html">Label</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/label.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/label.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/label.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/label.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/layout.html">Layout</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/layout.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/layout.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/layout.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/layout.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/menu.html">Menu</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/menu.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/menu.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/menu.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/menu.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/progressbar.html">ProgressBar</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/progressbar.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/progressbar.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/progressbar.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/progressbar.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/recttransform.html">RectTransform</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/recttransform.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/recttransform.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/recttransform.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/recttransform.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/stylesheet.html">StyleSheet</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/stylesheet.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/stylesheet.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/stylesheet.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/stylesheet.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/switch.html">Switch</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/switch.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/switch.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/switch.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/switch.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/textinput.html">TextInput</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/textinput.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/textinput.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/textinput.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/textinput.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/toolbutton.html">ToolButton</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/toolbutton.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/toolbutton.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/toolbutton.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/toolbutton.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/uidocument.html">UiDocument</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/uidocument.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/uidocument.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/uidocument.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/uidocument.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/uiloader.html">UiLoader</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/uiloader.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/uiloader.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/uiloader.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/uiloader.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/widget.html">Widget</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/widget.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/widget.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/widget.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/widget.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../reference/math-module.html">Math Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../reference/aabbox.html">AABBox</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/aabbox.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/aabbox.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/aabbox.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/aabbox.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/matrix3.html">Matrix3</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/matrix3.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/matrix3.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/matrix3.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/matrix3.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/matrix4.html">Matrix4</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/matrix4.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/matrix4.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/matrix4.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/matrix4.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/obbox.html">OBBox</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/obbox.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/obbox.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/obbox.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/obbox.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/plane.html">Plane</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/plane.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/plane.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/plane.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/plane.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/quaternion.html">Quaternion</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/quaternion.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/quaternion.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/quaternion.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/quaternion.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/ray.html">Ray</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/ray.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/ray.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/ray.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/ray.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/vector2.html">Vector2</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/vector2.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/vector2.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/vector2.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/vector2.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/vector3.html">Vector3</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/vector3.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/vector3.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/vector3.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/vector3.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/vector4.html">Vector4</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/vector4.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/vector4.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/vector4.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/vector4.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../reference/resources-module.html">Resources Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../reference/animationclip.html">AnimationClip</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/animationclip.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/animationclip.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/animationclip.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/animationclip.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/animationstatemachine.html">AnimationStateMachine</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/animationstatemachine.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/animationstatemachine.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/animationstatemachine.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/animationstatemachine.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/animationtrack.html">AnimationTrack</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/animationtrack.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/animationtrack.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/animationtrack.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/animationtrack.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/audioclip.html">AudioClip</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/audioclip.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/audioclip.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/audioclip.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/audioclip.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/bone.html">Bone</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/bone.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/bone.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/bone.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/bone.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/computebuffer.html">ComputeBuffer</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/computebuffer.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/computebuffer.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/computebuffer.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/computebuffer.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/computeinstance.html">ComputeInstance</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/computeinstance.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/computeinstance.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/computeinstance.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/computeinstance.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/computeshader.html">ComputeShader</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/computeshader.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/computeshader.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/computeshader.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/computeshader.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/controlscheme.html">ControlScheme</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/controlscheme.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/controlscheme.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/controlscheme.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/controlscheme.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/font.html">Font</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/font.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/font.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/font.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/font.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/map.html">Map</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/map.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/map.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/map.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/map.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/material.html">Material</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/material.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/material.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/material.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/material.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/materialinstance.html">MaterialInstance</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/materialinstance.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/materialinstance.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/materialinstance.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/materialinstance.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/mesh.html">Mesh</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/mesh.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/mesh.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/mesh.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/mesh.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/meshgroup.html">MeshGroup</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/meshgroup.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/meshgroup.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/meshgroup.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/meshgroup.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/pipeline.html">Pipeline</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/pipeline.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/pipeline.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/pipeline.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/pipeline.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/pose.html">Pose</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/pose.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/pose.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/pose.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/pose.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/prefab.html">Prefab</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/prefab.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/prefab.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/prefab.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/prefab.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/rendertarget.html">RenderTarget</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/rendertarget.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/rendertarget.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/rendertarget.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/rendertarget.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/resource.html">Resource</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/resource.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/resource.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/resource.html#public-enums">Public Enums</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/resource.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/resource.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/sprite.html">Sprite</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/sprite.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/sprite.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/sprite.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/sprite.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/text.html">Text</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/text.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/text.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/text.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/text.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/texture.html">Texture</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/texture.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/texture.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/texture.html#public-enums">Public Enums</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/texture.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/texture.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/tilemap.html">TileMap</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/tilemap.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/tilemap.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/tilemap.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/tilemap.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/tileset.html">TileSet</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/tileset.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/tileset.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/tileset.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/tileset.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/translator.html">Translator</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/translator.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/translator.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/translator.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/translator.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/visualeffect.html">VisualEffect</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../reference/visualeffect.html#description">Description</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/visualeffect.html#public-methods">Public Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/visualeffect.html#static-methods">Static Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../reference/visualeffect.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../reference/physicmaterial.html">PhysicMaterial</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../reference/physicmaterial.html#description">Description</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/physicmaterial.html#public-methods">Public Methods</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/physicmaterial.html#static-methods">Static Methods</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../reference/physicmaterial.html#methods-description">Methods Description</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
 
-        </div>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Thunder Engine  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
       </div>
-    </nav>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  <span class="sidebar-brand-text">Thunder Engine  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Thunder Engine</span></p>
+<ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../basics/index.html">Getting Started</a><input aria-label="Toggle navigation of Getting Started" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../basics/install.html">Install Thunder Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basics/editor.html">World Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basics/features.html">Thunder Engine Features</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">World Editor</a><input aria-label="Toggle navigation of World Editor" checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="viewport.html">Viewport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="properties.html">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content.html">Content Browser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hierarchy.html">Hierarchy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html">Plugin Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="builder.html">Building Project</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rendering/index.html">Rendering</a><input aria-label="Toggle navigation of Rendering" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rendering/components/camera.html">Camera</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../rendering/geometry/index.html">Geometry</a><input aria-label="Toggle navigation of Geometry" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rendering/geometry/mesh.html">Mesh Resource</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rendering/geometry/meshrender.html">MeshRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rendering/geometry/skinnedmeshrender.html">SkinnedMeshRender</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rendering/lighting/index.html">Lighting</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../rendering/vfx/index.html">Visual Effects (VFX)</a><input aria-label="Toggle navigation of Visual Effects (VFX)" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rendering/vfx/editor.html">VFX Editor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rendering/vfx/custom_modules.html">Creating Custom Modules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rendering/pipeline.html">Graphics Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../audio/index.html">Audio</a><input aria-label="Toggle navigation of Audio" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../audio/resources/audioclip.html">AudioClip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../audio/components/audiosource.html">AudioSource</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../scripting/index.html">Scripting</a><input aria-label="Toggle navigation of Scripting" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/creating_scripts.html">Creating and Using Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/exporting_variables.html">Variables and Property Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/instantiating_prefabs.html">Instantiating Prefabs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/native_introspection.html">Native Introspection</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reference/index.html">API Reference</a><input aria-label="Toggle navigation of API Reference" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/animation-module.html">Animation Module</a><input aria-label="Toggle navigation of Animation Module" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reference/animation.html">Animation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/propertyanimation.html">PropertyAnimation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/variantanimation.html">VariantAnimation</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/components-module.html">Components Module</a><input aria-label="Toggle navigation of Components Module" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reference/actor.html">Actor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/animator.html">Animator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/arealight.html">AreaLight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/armature.html">Armature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/audiosource.html">AudioSource</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/baselight.html">BaseLight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/boxcollider.html">BoxCollider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/camera.html">Camera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/capsulecollider.html">CapsuleCollider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/charactercontroller.html">CharacterController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/collider.html">Collider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/component.html">Component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/directlight.html">DirectLight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/effectrender.html">EffectRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/meshcollider.html">MeshCollider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/meshrender.html">MeshRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/nativebehaviour.html">NativeBehaviour</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/playerinput.html">PlayerInput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/pointlight.html">PointLight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/postprocessvolume.html">PostProcessVolume</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/renderable.html">Renderable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/rigidbody.html">RigidBody</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/scene.html">Scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/skinnedmeshrender.html">SkinnedMeshRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/spherecollider.html">SphereCollider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/spline.html">Spline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/spotlight.html">SpotLight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/spriterender.html">SpriteRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/textrender.html">TextRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/tilemaprender.html">TileMapRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/transform.html">Transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/volumecollider.html">VolumeCollider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/world.html">World</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/core-module.html">Core Module</a><input aria-label="Toggle navigation of Core Module" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reference/bson.html">Bson</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/event.html">Event</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/json.html">Json</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/metaenum.html">MetaEnum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/metamethod.html">MetaMethod</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/metaobject.html">MetaObject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/metaproperty.html">MetaProperty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/metatype.html">MetaType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/methodcallevent.html">MethodCallEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/object.html">Object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/objectsystem.html">ObjectSystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/tstring.html">TString</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/threadpool.html">ThreadPool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/url.html">Url</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/variant.html">Variant</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/engine-module.html">Engine Module</a><input aria-label="Toggle navigation of Engine Module" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reference/commandbuffer.html">CommandBuffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/engine.html">Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/gizmos.html">Gizmos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/input.html">Input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/log.html">Log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/module.html">Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/pipelinecontext.html">PipelineContext</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/pipelinetask.html">PipelineTask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/system.html">System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/timer.html">Timer</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/gui-module.html">Gui Module</a><input aria-label="Toggle navigation of Gui Module" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reference/abstractbutton.html">AbstractButton</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/button.html">Button</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/checkbox.html">CheckBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/floatinput.html">FloatInput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/foldout.html">Foldout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/frame.html">Frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/image.html">Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/label.html">Label</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/layout.html">Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/lineedit.html">LineEdit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/menu.html">Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/progressbar.html">ProgressBar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/recttransform.html">RectTransform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/stylesheet.html">StyleSheet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/switch.html">Switch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/toolbutton.html">ToolButton</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/uidocument.html">UiDocument</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/uiloader.html">UiLoader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/widget.html">Widget</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/math-module.html">Math Module</a><input aria-label="Toggle navigation of Math Module" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reference/aabbox.html">AABBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/matrix3.html">Matrix3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/matrix4.html">Matrix4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/obbox.html">OBBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/plane.html">Plane</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/quaternion.html">Quaternion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/ray.html">Ray</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/vector2.html">Vector2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/vector3.html">Vector3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/vector4.html">Vector4</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/resources-module.html">Resources Module</a><input aria-label="Toggle navigation of Resources Module" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reference/animationclip.html">AnimationClip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/animationstatemachine.html">AnimationStateMachine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/animationtrack.html">AnimationTrack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/audioclip.html">AudioClip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/bone.html">Bone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/computebuffer.html">ComputeBuffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/computeinstance.html">ComputeInstance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/computeshader.html">ComputeShader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/controlscheme.html">ControlScheme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/font.html">Font</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/map.html">Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/material.html">Material</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/materialinstance.html">MaterialInstance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/mesh.html">Mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/meshgroup.html">MeshGroup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/pipeline.html">Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/pose.html">Pose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/prefab.html">Prefab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/rendertarget.html">RenderTarget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/resource.html">Resource</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/sprite.html">Sprite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/text.html">Text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/texture.html">Texture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/tilemap.html">TileMap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/tileset.html">TileSet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/translator.html">Translator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/visualeffect.html">VisualEffect</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/assetconverter.html">AssetConverter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/assetconvertersettings.html">AssetConverterSettings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/editortool.html">EditorTool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/physicmaterial.html">PhysicMaterial</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Get Involved</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../involved/index.html">Contribute Documentation</a><input aria-label="Toggle navigation of Contribute Documentation" class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../involved/documentation_guide.html">Documentation Writing Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../involved/style_guide.html">Documentation Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../involved/review_process.html">Documentation Review Process</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../involved/localization.html">Documentation Localization</a></li>
+</ul>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Thunder Engine</a>
-      </nav>
-
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Page navigation">
-  <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>World Editor</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/editor/index.rst.txt" rel="nofollow"> View page source</a>
-      </li>
-  </ul>
-  <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
-  <section id="world-editor">
-<span id="doc-interface"></span><h1>World Editor<a class="headerlink" href="#world-editor" title="Permalink to this headline"></a></h1>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/editor/index.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="world-editor">
+<span id="doc-interface"></span><h1>World Editor<a class="headerlink" href="#world-editor" title="Link to this heading">¶</a></h1>
 <p>When you create a new project or open an existing one, you will find yourself on the main screen.</p>
 <p>The main screen provides a versatile workspace that developers can customize to suit their specific needs.
 This workspace is the central hub where you’ll perform various tasks and interact with your project’s elements.</p>
 <p>As you work within the main screen and navigate between these areas, you’ll have the tools and resources you need to build, edit, and manage your project effectively.
 Feel free to explore the various zones to streamline your workflow and achieve your development goals.</p>
 <section id="workspace-management">
-<h2>Workspace Management<a class="headerlink" href="#workspace-management" title="Permalink to this headline"></a></h2>
+<h2>Workspace Management<a class="headerlink" href="#workspace-management" title="Link to this heading">¶</a></h2>
 <p>The World Editor provides robust tools for managing your workspace, allowing users to tailor it to their specific needs.
 Whether you’re optimizing your layout, adding or removing widgets, adjusting sizes, or configuring panel arrangements, the Workspace Management feature offers flexibility and customization.</p>
 <p><strong>Changing Workspaces:</strong>
@@ -1062,8 +459,9 @@ Load saved workspaces at any time to maintain a consistent and familiar environm
 </ol>
 </section>
 <section id="main-areas">
-<h2>Main Areas<a class="headerlink" href="#main-areas" title="Permalink to this headline"></a></h2>
-<a class="reference internal image-reference" href="../_images/workspace.png"><img alt="Workspace" src="../_images/workspace.png" style="width: 800px;" /></a>
+<h2>Main Areas<a class="headerlink" href="#main-areas" title="Link to this heading">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/workspace.png"><img alt="Workspace" src="../_images/workspace.png" style="width: 800px;" />
+</a>
 <p>The main screen is divided into several key areas:</p>
 <p><a class="reference internal" href="viewport.html"><span class="doc">Viewport</span></a>:
 The viewport is the primary working area where you can view and manipulate project content.
@@ -1081,7 +479,7 @@ It displays a tree-like representation of project elements, allowing you to navi
 <p>Remember that the specific features and functionalities within each of these areas may vary depending on your project’s nature and the software or platform you’re using. Refer to the corresponding sections in this documentation for more detailed information on each area’s functionality.</p>
 </section>
 <section id="editor-capabilities">
-<h2>Editor Capabilities<a class="headerlink" href="#editor-capabilities" title="Permalink to this headline"></a></h2>
+<h2>Editor Capabilities<a class="headerlink" href="#editor-capabilities" title="Link to this heading">¶</a></h2>
 <p>Explore the documentation sections below to learn more about all components of the user interface and how to make the most of them in your projects.</p>
 <div class="toctree-wrapper compound" id="toc-interface">
 <ul>
@@ -1089,42 +487,86 @@ It displays a tree-like representation of project elements, allowing you to navi
 <li class="toctree-l1"><a class="reference internal" href="properties.html">Properties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="content.html">Content Browser</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hierarchy.html">Hierarchy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plugins.html">Plugin Managemer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">Plugin Manager</a></li>
 <li class="toctree-l1"><a class="reference internal" href="builder.html">Building Project</a></li>
 </ul>
 </div>
 </section>
 </section>
 
-
-           </div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="viewport.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Viewport</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../basics/features.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Thunder Engine Features</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, Thunder Engine
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../basics/features.html" class="btn btn-neutral float-left" title="Thunder Engine Features" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="viewport.html" class="btn btn-neutral float-right" title="Viewport" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
     </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">World Editor</a><ul>
+<li><a class="reference internal" href="#workspace-management">Workspace Management</a></li>
+<li><a class="reference internal" href="#main-areas">Main Areas</a></li>
+<li><a class="reference internal" href="#editor-capabilities">Editor Capabilities</a></li>
+</ul>
+</li>
+</ul>
 
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright 2024, Evgeniy Prikazchikov.</p>
-  </div>
-
-  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    provided by <a href="https://readthedocs.org">Read the Docs</a>.
-   
-
-</footer>
+          </div>
         </div>
       </div>
-    </section>
+      
+      
+    </aside>
   </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
-
-</body>
+</div><script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    </body>
 </html>
