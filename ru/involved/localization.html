@@ -1,0 +1,915 @@
+<!doctype html>
+<html class="no-js" lang="ru" data-content_root="../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Алфавитный указатель" href="../genindex.html"><link rel="search" title="Поиск" href="../search.html"><link rel="prev" title="Процесс рецензирования документации" href="review_process.html">
+
+    <!-- Generated with Sphinx 7.4.7 and Furo 2025.12.19 -->
+        <title>Локализация документации - документация Thunder Engine</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+<div class="announcement">
+  <aside class="announcement-content">
+     🌐 <a href='/en/'>English</a> | <a href='/ru/'>Русский</a> 
+  </aside>
+</div>
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">документация Thunder Engine </div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  <span class="sidebar-brand-text">документация Thunder Engine </span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Поиск" name="q" aria-label="Поиск">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Thunder Engine</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../basics/index.html">Начало работы</a><input aria-label="Toggle navigation of Начало работы" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../basics/install.html">Установка Thunder Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basics/editor.html">Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basics/features.html">Возможности Thunder Engine</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../editor/index.html">Editor</a><input aria-label="Toggle navigation of Editor" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../editor/viewport.html">Область просмотра</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor/properties.html">Свойства</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor/content.html">Обозреватель контента</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor/hierarchy.html">Иерархия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor/plugins.html">Менеджер плагинов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor/builder.html">Сборка проекта</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rendering/index.html">Рендеринг</a><input aria-label="Toggle navigation of Рендеринг" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rendering/components/camera.html">Камера</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../rendering/geometry/index.html">Геометрия</a><input aria-label="Toggle navigation of Геометрия" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rendering/geometry/mesh.html">Ресурс меша</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rendering/geometry/meshrender.html">MeshRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rendering/geometry/skinnedmeshrender.html">SkinnedMeshRender</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rendering/lighting/index.html">Освещение</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../rendering/vfx/index.html">Визуальные эффекты (VFX)</a><input aria-label="Toggle navigation of Визуальные эффекты (VFX)" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rendering/vfx/editor.html">Редактор VFX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rendering/vfx/custom_modules.html">Создание пользовательских модулей</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rendering/pipeline.html">Графический конвейер</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../audio/index.html">Аудио</a><input aria-label="Toggle navigation of Аудио" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../audio/resources/audioclip.html">AudioClip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../audio/components/audiosource.html">AudioSource</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../scripting/index.html">Скриптинг</a><input aria-label="Toggle navigation of Скриптинг" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/overview.html">Обзор</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/creating_scripts.html">Создание и использование скриптов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/exporting_variables.html">Переменные и редактор свойств</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/instantiating_prefabs.html">Создание экземпляров префабов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/native_introspection.html">Нативная интроспекция</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reference/index.html">API Reference</a><input aria-label="Toggle navigation of API Reference" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/animation-module.html">Animation Module</a><input aria-label="Toggle navigation of Animation Module" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reference/animation.html">Animation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/propertyanimation.html">PropertyAnimation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/variantanimation.html">VariantAnimation</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/components-module.html">Components Module</a><input aria-label="Toggle navigation of Components Module" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reference/actor.html">Actor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/animator.html">Animator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/arealight.html">AreaLight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/armature.html">Armature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/audiosource.html">AudioSource</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/baselight.html">BaseLight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/boxcollider.html">BoxCollider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/camera.html">Camera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/capsulecollider.html">CapsuleCollider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/charactercontroller.html">CharacterController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/collider.html">Collider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/component.html">Component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/directlight.html">DirectLight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/effectrender.html">EffectRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/meshcollider.html">MeshCollider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/meshrender.html">MeshRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/nativebehaviour.html">NativeBehaviour</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/playerinput.html">PlayerInput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/pointlight.html">PointLight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/postprocessvolume.html">PostProcessVolume</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/renderable.html">Renderable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/rigidbody.html">RigidBody</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/scene.html">Scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/skinnedmeshrender.html">SkinnedMeshRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/spherecollider.html">SphereCollider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/spline.html">Spline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/spotlight.html">SpotLight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/spriterender.html">SpriteRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/textrender.html">TextRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/tilemaprender.html">TileMapRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/transform.html">Transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/volumecollider.html">VolumeCollider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/world.html">World</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/core-module.html">Core Module</a><input aria-label="Toggle navigation of Core Module" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reference/bson.html">Bson</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/event.html">Event</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/json.html">Json</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/metaenum.html">MetaEnum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/metamethod.html">MetaMethod</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/metaobject.html">MetaObject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/metaproperty.html">MetaProperty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/metatype.html">MetaType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/methodcallevent.html">MethodCallEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/object.html">Object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/objectsystem.html">ObjectSystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/tstring.html">TString</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/threadpool.html">ThreadPool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/url.html">Url</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/variant.html">Variant</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/engine-module.html">Engine Module</a><input aria-label="Toggle navigation of Engine Module" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reference/commandbuffer.html">CommandBuffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/engine.html">Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/gizmos.html">Gizmos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/input.html">Input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/log.html">Log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/module.html">Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/pipelinecontext.html">PipelineContext</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/pipelinetask.html">PipelineTask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/system.html">System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/timer.html">Timer</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/gui-module.html">Gui Module</a><input aria-label="Toggle navigation of Gui Module" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reference/abstractbutton.html">AbstractButton</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/button.html">Button</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/checkbox.html">CheckBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/floatinput.html">FloatInput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/foldout.html">Foldout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/frame.html">Frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/image.html">Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/label.html">Label</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/layout.html">Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/lineedit.html">LineEdit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/menu.html">Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/progressbar.html">ProgressBar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/recttransform.html">RectTransform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/stylesheet.html">StyleSheet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/switch.html">Switch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/toolbutton.html">ToolButton</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/uidocument.html">UiDocument</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/uiloader.html">UiLoader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/widget.html">Widget</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/math-module.html">Math Module</a><input aria-label="Toggle navigation of Math Module" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reference/aabbox.html">AABBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/matrix3.html">Matrix3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/matrix4.html">Matrix4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/obbox.html">OBBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/plane.html">Plane</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/quaternion.html">Quaternion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/ray.html">Ray</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/vector2.html">Vector2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/vector3.html">Vector3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/vector4.html">Vector4</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/resources-module.html">Resources Module</a><input aria-label="Toggle navigation of Resources Module" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reference/animationclip.html">AnimationClip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/animationstatemachine.html">AnimationStateMachine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/animationtrack.html">AnimationTrack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/audioclip.html">AudioClip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/bone.html">Bone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/computebuffer.html">ComputeBuffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/computeinstance.html">ComputeInstance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/computeshader.html">ComputeShader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/controlscheme.html">ControlScheme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/font.html">Font</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/map.html">Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/material.html">Material</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/materialinstance.html">MaterialInstance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/mesh.html">Mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/meshgroup.html">MeshGroup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/pipeline.html">Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/pose.html">Pose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/prefab.html">Prefab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/rendertarget.html">RenderTarget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/resource.html">Resource</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/sprite.html">Sprite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/text.html">Text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/texture.html">Texture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/tilemap.html">TileMap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/tileset.html">TileSet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/translator.html">Translator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/visualeffect.html">VisualEffect</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/assetconverter.html">AssetConverter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/assetconvertersettings.html">AssetConverterSettings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/editortool.html">EditorTool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/physicmaterial.html">PhysicMaterial</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Принять участие</span></p>
+<ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="index.html">Внести вклад в документацию</a><input aria-label="Toggle navigation of Внести вклад в документацию" class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="documentation_guide.html">Руководство по написанию документации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="style_guide.html">Руководство по стилю документации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="review_process.html">Процесс рецензирования документации</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Локализация документации</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/involved/localization.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="documentation-localization">
+<span id="localization"></span><h1>Локализация документации<a class="headerlink" href="#documentation-localization" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Документация Thunder Engine поддерживает несколько языков. В настоящее время основным языком является английский, но мы приветствуем переводы на другие языки. Локализация реализована с использованием системы <strong>gettext</strong>, которая позволяет поддерживать переводы без дублирования исходных RST-файлов.</p>
+<div class="admonition tip">
+<p class="admonition-title">Совет</p>
+<p>Если вы хотите перевести документацию на ваш язык, свяжитесь с командой Thunder Engine через GitHub Issues, чтобы скоординировать усилия.</p>
+</div>
+<section id="how-localization-works">
+<h2>Как работает локализация<a class="headerlink" href="#how-localization-works" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Система локализации основана на <strong>gettext</strong> — стандартном инструменте интернационализации:</p>
+<ol class="arabic simple">
+<li><p>Исходная документация написана на английском в файлах <code class="docutils literal notranslate"><span class="pre">.rst</span></code></p></li>
+<li><p>Строки для перевода извлекаются из исходных файлов в файлы <code class="docutils literal notranslate"><span class="pre">.pot</span></code> (шаблоны)</p></li>
+<li><p>Для каждого языка создаются файлы <code class="docutils literal notranslate"><span class="pre">.po</span></code>, содержащие переводы</p></li>
+<li><p>Во время сборки Sphinx использует файлы <code class="docutils literal notranslate"><span class="pre">.po</span></code> для генерации документации на целевом языке</p></li>
+</ol>
+<p>Преимущества этого подхода:</p>
+<ul class="simple">
+<li><p>Отсутствие дублирования RST-файлов для каждого языка</p></li>
+<li><p>Изменения в исходной документации легко отслеживать</p></li>
+<li><p>Переводы хранятся отдельно и могут обновляться независимо</p></li>
+</ul>
+</section>
+<section id="project-structure">
+<h2>Структура проекта<a class="headerlink" href="#project-structure" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>thunder-doc/
+├── _build/              # generated HTML
+├── source/              # original documentation (en)
+│   ├── conf.py
+│   ├── index.rst
+│   └── ...
+├── locales/             # folder for translation files
+│   └── ru/LC_MESSAGES/
+└── make.bat
+</pre></div>
+</div>
+</section>
+<section id="adding-a-new-language">
+<h2>Добавление нового языка<a class="headerlink" href="#adding-a-new-language" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Предположим, вы хотите добавить перевод на русский язык (код языка <code class="docutils literal notranslate"><span class="pre">ru</span></code>).</p>
+<p><strong>Шаг 1: Установите необходимые инструменты</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>sphinx<span class="w"> </span>sphinx-intl<span class="w"> </span>gettext
+</pre></div>
+</div>
+<p><strong>Шаг 2: Создайте шаблоны перевода</strong></p>
+<p>Создайте шаблоны <code class="docutils literal notranslate"><span class="pre">.pot</span></code> из исходных RST-файлов:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate translation templates</span>
+make<span class="w"> </span>gettext
+</pre></div>
+</div>
+<p><strong>Шаг 3: Создайте файлы перевода для нового языка</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create .po files for Russian</span>
+sphinx-intl<span class="w"> </span>update<span class="w"> </span>-l<span class="w"> </span>ru
+</pre></div>
+</div>
+<p>Эта команда создаёт структуру:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>locales/
+└── ru/
+    └── LC_MESSAGES/
+        ├── basics.po
+        ├── rendering.po
+        ├── components.po
+        └── ...
+</pre></div>
+</div>
+<p><strong>Шаг 4: Настройте сборку для нового языка</strong></p>
+<p>Отредактируйте <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>, чтобы добавить цель для нового языка:</p>
+<div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="c"># Makefile</span>
+
+<span class="c"># Build English version</span>
+<span class="nf">html-en</span><span class="o">:</span>
+<span class="w">    </span>sphinx-build<span class="w"> </span>-b<span class="w"> </span>html<span class="w"> </span>source/<span class="w"> </span>_build/html/en<span class="w"> </span>-D<span class="w"> </span><span class="nv">language</span><span class="o">=</span>en
+
+<span class="c"># Build Russian version</span>
+<span class="nf">html-ru</span><span class="o">:</span>
+<span class="w">    </span>sphinx-build<span class="w"> </span>-b<span class="w"> </span>html<span class="w"> </span>source/<span class="w"> </span>_build/html/ru<span class="w"> </span>-D<span class="w"> </span><span class="nv">language</span><span class="o">=</span>ru
+
+<span class="c"># Build all versions</span>
+<span class="nf">html-all</span><span class="o">:</span><span class="w"> </span><span class="n">html</span>-<span class="n">en</span> <span class="n">html</span>-<span class="n">ru</span> <span class="n">html</span>-<span class="n">zh</span>
+</pre></div>
+</div>
+<p><strong>Шаг 5: Настройте Sphinx</strong></p>
+<p>Убедитесь, что <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> настроен для языков:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># conf.py</span>
+
+<span class="c1"># Available languages</span>
+<span class="n">language</span> <span class="o">=</span> <span class="s1">&#39;en&#39;</span>  <span class="c1"># Default</span>
+
+<span class="c1"># Directory with translations</span>
+<span class="n">locale_dirs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;locales/&#39;</span><span class="p">]</span>
+
+<span class="c1"># Disable compaction for proper link handling</span>
+<span class="n">gettext_compact</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</section>
+<section id="translation-process">
+<h2>Процесс перевода<a class="headerlink" href="#translation-process" title="Ссылка на этот заголовок">¶</a></h2>
+<p><strong>Редактирование .po файлов</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">.po</span></code> файлы имеют следующий формат:</p>
+<div class="highlight-po notranslate"><div class="highlight"><pre><span></span><span class="kd">#: ../../basics/getting-started.rst:10</span>
+<span class="nv">msgid</span> <span class="s">&quot;Getting Started&quot;</span>
+<span class="nv">msgstr</span> <span class="s">&quot;Начало работы&quot;</span>
+
+<span class="kd">#: ../../basics/getting-started.rst:12</span>
+<span class="nv">msgid</span> <span class="s">&quot;&quot;</span>
+<span class="s">&quot;Thunder Engine is a powerful game engine designed for modern game development.&quot;</span>
+<span class="nv">msgstr</span> <span class="s">&quot;&quot;</span>
+<span class="s">&quot;Thunder Engine — это мощный игровой движок, разработанный для современной &quot;</span>
+<span class="s">&quot;разработки игр.&quot;</span>
+</pre></div>
+</div>
+<p>Где: *   <code class="docutils literal notranslate"><span class="pre">msgid</span></code> — исходная строка на английском *   <code class="docutils literal notranslate"><span class="pre">msgstr</span></code> — перевод на целевой язык (изначально пуст)</p>
+<p><strong>Что нужно переводить</strong></p>
+<ul class="simple">
+<li><p>✅ Весь текстовый контент (заголовки, абзацы, списки)</p></li>
+<li><p>✅ Описания свойств и методов</p></li>
+<li><p>✅ Комментарии в примерах кода</p></li>
+<li><p>✅ Предупреждения и примечания (<code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">note::</span></code>, <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">tip::</span></code>)</p></li>
+<li><p>❌ Имена классов, методов и свойств (оставляйте как в API)</p></li>
+<li><p>❌ Синтаксис RST (директивы, роли)</p></li>
+<li><p>❌ Код (сами примеры кода не переводятся)</p></li>
+</ul>
+<p><strong>Соглашения по переводу</strong></p>
+<p>Терминология должна быть согласованной. Ключевые термины:</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Термин (английский)</p></th>
+<th class="head"><p>Перевод (русский)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Actor</p></td>
+<td><p>Актёр</p></td>
+</tr>
+<tr class="row-odd"><td><p>Component</p></td>
+<td><p>Компонент</p></td>
+</tr>
+<tr class="row-even"><td><p>Resource</p></td>
+<td><p>Ресурс</p></td>
+</tr>
+<tr class="row-odd"><td><p>Scene</p></td>
+<td><p>Сцена</p></td>
+</tr>
+<tr class="row-even"><td><p>Mesh</p></td>
+<td><p>Меш</p></td>
+</tr>
+<tr class="row-odd"><td><p>Camera</p></td>
+<td><p>Камера</p></td>
+</tr>
+<tr class="row-even"><td><p>Light</p></td>
+<td><p>Свет</p></td>
+</tr>
+<tr class="row-odd"><td><p>Material</p></td>
+<td><p>Материал</p></td>
+</tr>
+<tr class="row-even"><td><p>Shader</p></td>
+<td><p>Шейдер</p></td>
+</tr>
+<tr class="row-odd"><td><p>Rendering</p></td>
+<td><p>Рендеринг</p></td>
+</tr>
+<tr class="row-even"><td><p>Property</p></td>
+<td><p>Свойство</p></td>
+</tr>
+<tr class="row-odd"><td><p>Method</p></td>
+<td><p>Метод</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Verbs:</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Verb</p></th>
+<th class="head"><p>Перевод (русский)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>create</p></td>
+<td><p>создавать</p></td>
+</tr>
+<tr class="row-odd"><td><p>load</p></td>
+<td><p>загружать</p></td>
+</tr>
+<tr class="row-even"><td><p>save</p></td>
+<td><p>сохранять</p></td>
+</tr>
+<tr class="row-odd"><td><p>set</p></td>
+<td><p>устанавливать</p></td>
+</tr>
+<tr class="row-even"><td><p>get</p></td>
+<td><p>получать</p></td>
+</tr>
+<tr class="row-odd"><td><p>enable</p></td>
+<td><p>включать</p></td>
+</tr>
+<tr class="row-even"><td><p>disable</p></td>
+<td><p>отключать</p></td>
+</tr>
+<tr class="row-odd"><td><p>call</p></td>
+<td><p>вызывать</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Инструменты для перевода</strong></p>
+<p>Для редактирования файлов <code class="docutils literal notranslate"><span class="pre">.po</span></code> рекомендуется использовать:</p>
+<ul>
+<li><p><strong>Poedit</strong> (рекомендуется для начинающих)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install on Ubuntu</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>poedit
+
+<span class="c1"># macOS</span>
+brew<span class="w"> </span>install<span class="w"> </span>poedit
+</pre></div>
+</div>
+</li>
+<li><p><strong>Lokalize</strong> (для продвинутых пользователей)</p></li>
+<li><p><strong>Любой текстовый редактор</strong> — файлы <code class="docutils literal notranslate"><span class="pre">.po</span></code> можно редактировать в любом текстовом редакторе</p></li>
+</ul>
+<p><strong>Пример перевода</strong></p>
+<p>Исходный файл (<code class="docutils literal notranslate"><span class="pre">basics/getting-started.rst</span></code>):</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">Getting Started</span>
+<span class="gh">===============</span>
+
+Thunder Engine is a powerful game engine designed for modern
+game development.
+</pre></div>
+</div>
+<p>Соответствующий файл <code class="docutils literal notranslate"><span class="pre">.po</span></code> после перевода на русский:</p>
+<div class="highlight-po notranslate"><div class="highlight"><pre><span></span><span class="kd">#: ../../basics/getting-started.rst:1</span>
+<span class="nv">msgid</span> <span class="s">&quot;Getting Started&quot;</span>
+<span class="nv">msgstr</span> <span class="s">&quot;Начало работы&quot;</span>
+
+<span class="kd">#: ../../basics/getting-started.rst:3</span>
+<span class="nv">msgid</span> <span class="s">&quot;&quot;</span>
+<span class="s">&quot;Thunder Engine is a powerful game engine designed for modern &quot;</span>
+<span class="s">&quot;game development.&quot;</span>
+<span class="nv">msgstr</span> <span class="s">&quot;&quot;</span>
+<span class="s">&quot;Thunder Engine — это мощный игровой движок, разработанный для современной &quot;</span>
+<span class="s">&quot;разработки игр.&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="checking-the-translation">
+<h2>Проверка перевода<a class="headerlink" href="#checking-the-translation" title="Ссылка на этот заголовок">¶</a></h2>
+<p><strong>Сборка локализованной документации</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Build Russian version</span>
+make<span class="w"> </span>html-ru
+
+<span class="c1"># Or directly via sphinx-build</span>
+sphinx-build<span class="w"> </span>-b<span class="w"> </span>html<span class="w"> </span>-D<span class="w"> </span><span class="nv">language</span><span class="o">=</span>ru<span class="w"> </span>.<span class="w"> </span>_build/ru
+</pre></div>
+</div>
+<p><strong>Проверка качества</strong></p>
+<p>Перед отправкой перевода проверьте:</p>
+<ul>
+<li><p>[ ] Все строки переведены (нет пустых <code class="docutils literal notranslate"><span class="pre">msgstr</span></code>)</p></li>
+<li><p>[ ] Синтаксис файла <code class="docutils literal notranslate"><span class="pre">.po</span></code> корректен:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>msgfmt<span class="w"> </span>--check<span class="w"> </span>locales/ru/LC_MESSAGES/*.po
+</pre></div>
+</div>
+</li>
+<li><p>[ ] Документация собирается без ошибок:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>clean
+make<span class="w"> </span>html-ru
+</pre></div>
+</div>
+</li>
+<li><p>[ ] Все ссылки работают (проверьте в браузере)</p></li>
+<li><p>[ ] Терминология согласована по всему документу</p></li>
+<li><p>[ ] Код в примерах не изменён</p></li>
+<li><p>[ ] Специальные символы и форматирование сохранены</p></li>
+</ul>
+</section>
+<section id="submitting-a-pull-request">
+<h2>Отправка Pull Request<a class="headerlink" href="#submitting-a-pull-request" title="Ссылка на этот заголовок">¶</a></h2>
+<p><strong>Шаг 1: Создайте ветку для перевода</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>docs/ru-translation
+</pre></div>
+</div>
+<p><strong>Шаг 2: Добавьте файлы перевода в репозиторий</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add .po files for Russian</span>
+git<span class="w"> </span>add<span class="w"> </span>locales/ru/
+
+<span class="c1"># Add changes to Makefile (if a build target was added)</span>
+git<span class="w"> </span>add<span class="w"> </span>Makefile
+
+<span class="c1"># Commit the changes</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;docs: add Russian translation (initial)&quot;</span>
+</pre></div>
+</div>
+<p><strong>Шаг 3: Отправьте изменения в GitHub</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>docs/ru-translation
+</pre></div>
+</div>
+<p><strong>Шаг 4: Создайте Pull Request</strong></p>
+<p>При создании PR включите в описание:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gu">## Localization: Russian</span>
+
+<span class="gu">### What was done</span>
+<span class="k">-</span><span class="w"> </span>Added Russian translation of the documentation
+<span class="k">-</span><span class="w"> </span>Created .po files in <span class="sb">`locales/ru/LC_MESSAGES/`</span>
+<span class="k">-</span><span class="w"> </span>Added <span class="sb">`html-ru`</span> build target to Makefile
+
+<span class="gu">### Translation status</span>
+<span class="k">- [x]</span> basics/ — 100%
+<span class="k">- [x]</span> rendering/ — 100%
+<span class="k">- [ ]</span> scripting/ — 50% (in progress)
+<span class="k">- [x]</span> components/ — 100%
+
+<span class="gu">### Verification</span>
+<span class="k">- [x]</span> <span class="sb">`msgfmt`</span> passes without errors
+<span class="k">- [x]</span> Documentation builds successfully
+<span class="k">- [x]</span> All links work
+
+<span class="gu">### Screenshots</span>
+![<span class="nt">Russian version build</span>](<span class="na">url</span>)
+</pre></div>
+</div>
+<p><strong>Шаг 5: Ответьте на комментарии рецензента</strong></p>
+<p>После создания PR рецензент проверит:</p>
+<ul class="simple">
+<li><p>Правильность перевода технических терминов</p></li>
+<li><p>Качество перевода (грамматика, стиль)</p></li>
+<li><p>Сохранение форматирования</p></li>
+<li><p>Работоспособность ссылок</p></li>
+</ul>
+</section>
+<section id="updating-translations">
+<h2>Обновление переводов<a class="headerlink" href="#updating-translations" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Когда исходная документация обновляется, переводы также необходимо обновлять:</p>
+<p><strong>Шаг 1: Обновите шаблоны</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate new templates</span>
+sphinx-build<span class="w"> </span>-b<span class="w"> </span>gettext<span class="w"> </span>source/<span class="w"> </span>_build/gettext
+</pre></div>
+</div>
+<p><strong>Шаг 2: Обновите существующие переводы</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Update .po files for Russian</span>
+sphinx-intl<span class="w"> </span>update<span class="w"> </span>-p<span class="w"> </span>_build/gettext<span class="w"> </span>-l<span class="w"> </span>ru
+</pre></div>
+</div>
+<p><strong>Шаг 3: Переведите новые строки</strong></p>
+<p>В файлах <code class="docutils literal notranslate"><span class="pre">.po</span></code> появятся новые записи с пустым <code class="docutils literal notranslate"><span class="pre">msgstr</span></code>. Их необходимо перевести.</p>
+<p><strong>Шаг 4: Отправьте обновления</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>locales/ru/
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;docs: update Russian translation&quot;</span>
+git<span class="w"> </span>push
+</pre></div>
+</div>
+</section>
+<section id="checklist-for-adding-a-new-localization">
+<h2>Контрольный список для добавления новой локализации<a class="headerlink" href="#checklist-for-adding-a-new-localization" title="Ссылка на этот заголовок">¶</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Create structure</strong>
+- Create <code class="docutils literal notranslate"><span class="pre">.po</span></code> files for all documents
+- Add build target to <code class="docutils literal notranslate"><span class="pre">Makefile</span></code></p></li>
+<li><p><strong>Translation</strong>
+- All strings are translated
+- Terminology is consistent
+- Code comments are translated</p></li>
+<li><p><strong>Verification</strong>
+- <code class="docutils literal notranslate"><span class="pre">msgfmt</span></code> produces no errors
+- Documentation builds without warnings
+- All links work
+- Formatting is preserved</p></li>
+<li><p><strong>Submission</strong>
+- Branch created with descriptive name
+- Commit with message <code class="docutils literal notranslate"><span class="pre">docs:</span> <span class="pre">add</span> <span class="pre">[language]</span> <span class="pre">translation</span></code>
+- Pull Request created with translation status description</p></li>
+</ol>
+</section>
+<section id="useful-links">
+<h2>Полезные ссылки<a class="headerlink" href="#useful-links" title="Ссылка на этот заголовок">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/advanced/intl.html">Руководство по интернационализации Sphinx</a></p></li>
+<li><p><a class="reference external" href="https://github.com/sphinx-doc/sphinx-intl">Документация sphinx-intl</a></p></li>
+<li><p><a class="reference external" href="https://poedit.net/">Редактор Poedit</a></p></li>
+<li><p><a class="reference external" href="https://www.gnu.org/software/gettext/manual/">Утилиты GNU gettext</a></p></li>
+<li><p><a class="reference external" href="https://github.com/thunder-engine/thunder-doc/issues">GitHub Issues для обсуждения локализации</a></p></li>
+</ul>
+</section>
+<section id="how-to-become-a-translator">
+<h2>Как стать переводчиком<a class="headerlink" href="#how-to-become-a-translator" title="Ссылка на этот заголовок">¶</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Выберите язык</strong> для перевода (русский, китайский, немецкий и т.д.)</p></li>
+<li><p><strong>Проверьте</strong>, существует ли уже активный перевод для этого языка</p></li>
+<li><p><strong>Создайте Issue</strong> в репозитории thunder-doc, указав своё намерение переводить</p></li>
+<li><p><strong>Следуйте инструкциям</strong> выше, чтобы создать файлы перевода</p></li>
+<li><p><strong>Начните с одного документа</strong> — вам не нужно переводить всё сразу</p></li>
+<li><p><strong>Отправьте PR</strong> даже с частичным переводом — другие могут помочь продолжить</p></li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Совет</p>
+<p>Даже перевод одного документа — это ценный вклад! Не бойтесь начинать с малого.</p>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          <a class="prev-page" href="review_process.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Процесс рецензирования документации</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, Thunder Engine
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Локализация документации</a><ul>
+<li><a class="reference internal" href="#how-localization-works">Как работает локализация</a></li>
+<li><a class="reference internal" href="#project-structure">Структура проекта</a></li>
+<li><a class="reference internal" href="#adding-a-new-language">Добавление нового языка</a></li>
+<li><a class="reference internal" href="#translation-process">Процесс перевода</a></li>
+<li><a class="reference internal" href="#checking-the-translation">Проверка перевода</a></li>
+<li><a class="reference internal" href="#submitting-a-pull-request">Отправка Pull Request</a></li>
+<li><a class="reference internal" href="#updating-translations">Обновление переводов</a></li>
+<li><a class="reference internal" href="#checklist-for-adding-a-new-localization">Контрольный список для добавления новой локализации</a></li>
+<li><a class="reference internal" href="#useful-links">Полезные ссылки</a></li>
+<li><a class="reference internal" href="#how-to-become-a-translator">Как стать переводчиком</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=372fde1a"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../_static/translations.js?v=9bfe3ffa"></script>
+    </body>
+</html>

@@ -1,0 +1,932 @@
+<!doctype html>
+<html class="no-js" lang="ru" data-content_root="../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Алфавитный указатель" href="../genindex.html"><link rel="search" title="Поиск" href="../search.html"><link rel="next" title="TileMap" href="tilemap.html"><link rel="prev" title="Text" href="text.html">
+
+    <!-- Generated with Sphinx 7.4.7 and Furo 2025.12.19 -->
+        <title>Texture - документация Thunder Engine</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+<div class="announcement">
+  <aside class="announcement-content">
+     🌐 <a href='/en/'>English</a> | <a href='/ru/'>Русский</a> 
+  </aside>
+</div>
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">документация Thunder Engine </div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  <span class="sidebar-brand-text">документация Thunder Engine </span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Поиск" name="q" aria-label="Поиск">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Thunder Engine</span></p>
+<ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../basics/index.html">Начало работы</a><input aria-label="Toggle navigation of Начало работы" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../basics/install.html">Установка Thunder Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basics/editor.html">Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basics/features.html">Возможности Thunder Engine</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../editor/index.html">Мировой редактор</a><input aria-label="Toggle navigation of Мировой редактор" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../editor/viewport.html">Область просмотра</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor/properties.html">Свойства</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor/content.html">Обозреватель контента</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor/hierarchy.html">Иерархия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor/plugins.html">Менеджер плагинов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../editor/builder.html">Сборка проекта</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../rendering/index.html">Рендеринг</a><input aria-label="Toggle navigation of Рендеринг" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rendering/components/camera.html">Камера</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../rendering/geometry/index.html">Геометрия</a><input aria-label="Toggle navigation of Геометрия" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rendering/geometry/mesh.html">Ресурс меша</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rendering/geometry/meshrender.html">MeshRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rendering/geometry/skinnedmeshrender.html">SkinnedMeshRender</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rendering/lighting/index.html">Освещение</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../rendering/vfx/index.html">Визуальные эффекты (VFX)</a><input aria-label="Toggle navigation of Визуальные эффекты (VFX)" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../rendering/vfx/editor.html">Редактор VFX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rendering/vfx/custom_modules.html">Создание пользовательских модулей</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rendering/pipeline.html">Графический конвейер</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../audio/index.html">Аудио</a><input aria-label="Toggle navigation of Аудио" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../audio/resources/audioclip.html">AudioClip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../audio/components/audiosource.html">AudioSource</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../scripting/index.html">Скриптинг</a><input aria-label="Toggle navigation of Скриптинг" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/overview.html">Обзор</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/creating_scripts.html">Создание и использование скриптов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/exporting_variables.html">Переменные и редактор свойств</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/instantiating_prefabs.html">Создание экземпляров префабов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/native_introspection.html">Нативная интроспекция</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">API Reference</a><input aria-label="Toggle navigation of API Reference" checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="animation-module.html">Animation Module</a><input aria-label="Toggle navigation of Animation Module" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="animation.html">Animation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="propertyanimation.html">PropertyAnimation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="variantanimation.html">VariantAnimation</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="components-module.html">Components Module</a><input aria-label="Toggle navigation of Components Module" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="actor.html">Actor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="animator.html">Animator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arealight.html">AreaLight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="armature.html">Armature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="audiosource.html">AudioSource</a></li>
+<li class="toctree-l3"><a class="reference internal" href="baselight.html">BaseLight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="boxcollider.html">BoxCollider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="camera.html">Camera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capsulecollider.html">CapsuleCollider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="charactercontroller.html">CharacterController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="collider.html">Collider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="component.html">Component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="directlight.html">DirectLight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="effectrender.html">EffectRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="meshcollider.html">MeshCollider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="meshrender.html">MeshRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nativebehaviour.html">NativeBehaviour</a></li>
+<li class="toctree-l3"><a class="reference internal" href="playerinput.html">PlayerInput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pointlight.html">PointLight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="postprocessvolume.html">PostProcessVolume</a></li>
+<li class="toctree-l3"><a class="reference internal" href="renderable.html">Renderable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rigidbody.html">RigidBody</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scene.html">Scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="skinnedmeshrender.html">SkinnedMeshRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spherecollider.html">SphereCollider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spline.html">Spline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spotlight.html">SpotLight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spriterender.html">SpriteRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="textrender.html">TextRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tilemaprender.html">TileMapRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transform.html">Transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="volumecollider.html">VolumeCollider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="world.html">World</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="core-module.html">Core Module</a><input aria-label="Toggle navigation of Core Module" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="bson.html">Bson</a></li>
+<li class="toctree-l3"><a class="reference internal" href="event.html">Event</a></li>
+<li class="toctree-l3"><a class="reference internal" href="json.html">Json</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metaenum.html">MetaEnum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metamethod.html">MetaMethod</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metaobject.html">MetaObject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metaproperty.html">MetaProperty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metatype.html">MetaType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="methodcallevent.html">MethodCallEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="object.html">Object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objectsystem.html">ObjectSystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tstring.html">TString</a></li>
+<li class="toctree-l3"><a class="reference internal" href="threadpool.html">ThreadPool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="url.html">Url</a></li>
+<li class="toctree-l3"><a class="reference internal" href="variant.html">Variant</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="engine-module.html">Engine Module</a><input aria-label="Toggle navigation of Engine Module" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="commandbuffer.html">CommandBuffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="engine.html">Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gizmos.html">Gizmos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="input.html">Input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="log.html">Log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="module.html">Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelinecontext.html">PipelineContext</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelinetask.html">PipelineTask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="system.html">System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timer.html">Timer</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="gui-module.html">Gui Module</a><input aria-label="Toggle navigation of Gui Module" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="abstractbutton.html">AbstractButton</a></li>
+<li class="toctree-l3"><a class="reference internal" href="button.html">Button</a></li>
+<li class="toctree-l3"><a class="reference internal" href="checkbox.html">CheckBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="floatinput.html">FloatInput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="foldout.html">Foldout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="frame.html">Frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="image.html">Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="label.html">Label</a></li>
+<li class="toctree-l3"><a class="reference internal" href="layout.html">Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lineedit.html">LineEdit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="menu.html">Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="progressbar.html">ProgressBar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="recttransform.html">RectTransform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stylesheet.html">StyleSheet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="switch.html">Switch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="toolbutton.html">ToolButton</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uidocument.html">UiDocument</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uiloader.html">UiLoader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="widget.html">Widget</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="math-module.html">Math Module</a><input aria-label="Toggle navigation of Math Module" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="aabbox.html">AABBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matrix3.html">Matrix3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matrix4.html">Matrix4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="obbox.html">OBBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plane.html">Plane</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quaternion.html">Quaternion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ray.html">Ray</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vector2.html">Vector2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vector3.html">Vector3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vector4.html">Vector4</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="resources-module.html">Resources Module</a><input aria-label="Toggle navigation of Resources Module" checked="" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="animationclip.html">AnimationClip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="animationstatemachine.html">AnimationStateMachine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="animationtrack.html">AnimationTrack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="audioclip.html">AudioClip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bone.html">Bone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="computebuffer.html">ComputeBuffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="computeinstance.html">ComputeInstance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="computeshader.html">ComputeShader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controlscheme.html">ControlScheme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="font.html">Font</a></li>
+<li class="toctree-l3"><a class="reference internal" href="map.html">Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="material.html">Material</a></li>
+<li class="toctree-l3"><a class="reference internal" href="materialinstance.html">MaterialInstance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mesh.html">Mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="meshgroup.html">MeshGroup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline.html">Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pose.html">Pose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="prefab.html">Prefab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rendertarget.html">RenderTarget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html">Resource</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sprite.html">Sprite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="text.html">Text</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Texture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tilemap.html">TileMap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tileset.html">TileSet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="translator.html">Translator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="visualeffect.html">VisualEffect</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="assetconverter.html">AssetConverter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assetconvertersettings.html">AssetConverterSettings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editortool.html">EditorTool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="physicmaterial.html">PhysicMaterial</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Принять участие</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../involved/index.html">Внести вклад в документацию</a><input aria-label="Toggle navigation of Внести вклад в документацию" class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../involved/documentation_guide.html">Руководство по написанию документации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../involved/style_guide.html">Руководство по стилю документации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../involved/review_process.html">Процесс рецензирования документации</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../involved/localization.html">Локализация документации</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/reference/texture.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="texture">
+<span id="api-texture"></span><h1>Texture<a class="headerlink" href="#texture" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Inherited: None</p>
+<section id="description">
+<span id="api-texture-description"></span><h2>Description<a class="headerlink" href="#description" title="Ссылка на этот заголовок">¶</a></h2>
+<p>This class can be used to handle texture resource or create them at runtime.</p>
+</section>
+<section id="public-methods">
+<span id="api-texture-public"></span><h2>Public Methods<a class="headerlink" href="#public-methods" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>void</p></td>
+<td><p><a class="reference internal" href="#api-texture-ac792b81"><span class="std std-ref">addSurface</span></a> (const Texture::Surface &amp; surface)</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p><a class="reference internal" href="#api-texture-1ed27890"><span class="std std-ref">depth</span></a> () const</p></td>
+</tr>
+<tr class="row-odd"><td><p>int</p></td>
+<td><p><a class="reference internal" href="#api-texture-b18ed63a"><span class="std std-ref">depthBits</span></a> () const</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p><a class="reference internal" href="#api-texture-c6853014"><span class="std std-ref">filtering</span></a> () const</p></td>
+</tr>
+<tr class="row-odd"><td><p>int</p></td>
+<td><p><a class="reference internal" href="#api-texture-04fde293"><span class="std std-ref">flags</span></a> () const</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p><a class="reference internal" href="#api-texture-4b8e7d59"><span class="std std-ref">format</span></a> () const</p></td>
+</tr>
+<tr class="row-odd"><td><p>int</p></td>
+<td><p><a class="reference internal" href="#api-texture-cfb962d8"><span class="std std-ref">getPixel</span></a> (int  x, int  y, int  level) const</p></td>
+</tr>
+<tr class="row-even"><td><p>ByteArray</p></td>
+<td><p><a class="reference internal" href="#api-texture-536710bc"><span class="std std-ref">getPixels</span></a> (int  level) const</p></td>
+</tr>
+<tr class="row-odd"><td><p>int</p></td>
+<td><p><a class="reference internal" href="#api-texture-67129ebc"><span class="std std-ref">height</span></a> () const</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p><a class="reference internal" href="#api-texture-b39f207e"><span class="std std-ref">isArray</span></a> () const</p></td>
+</tr>
+<tr class="row-odd"><td><p>bool</p></td>
+<td><p><a class="reference internal" href="#api-texture-3c07f51d"><span class="std std-ref">isCubemap</span></a> () const</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p><a class="reference internal" href="#api-texture-a634c52b"><span class="std std-ref">isFeedback</span></a> () const</p></td>
+</tr>
+<tr class="row-odd"><td><p>bool</p></td>
+<td><p><a class="reference internal" href="#api-texture-e48069ad"><span class="std std-ref">isRender</span></a> () const</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p><a class="reference internal" href="#api-texture-f750a612"><span class="std std-ref">mipCount</span></a> () const</p></td>
+</tr>
+<tr class="row-odd"><td><p>void</p></td>
+<td><p><a class="reference internal" href="#api-texture-72c5ea94"><span class="std std-ref">readPixels</span></a> (int  x, int  y, int  width, int  height)</p></td>
+</tr>
+<tr class="row-even"><td><p>void</p></td>
+<td><p><a class="reference internal" href="#api-texture-c562f98b"><span class="std std-ref">resize</span></a> (int  width, int  height)</p></td>
+</tr>
+<tr class="row-odd"><td><p>void</p></td>
+<td><p><a class="reference internal" href="#api-texture-0d861cf3"><span class="std std-ref">setCompress</span></a> (int  method)</p></td>
+</tr>
+<tr class="row-even"><td><p>void</p></td>
+<td><p><a class="reference internal" href="#api-texture-ce08bd13"><span class="std std-ref">setDepth</span></a> (int  depth)</p></td>
+</tr>
+<tr class="row-odd"><td><p>void</p></td>
+<td><p><a class="reference internal" href="#api-texture-1b2e94d7"><span class="std std-ref">setDepthBits</span></a> (int  depth)</p></td>
+</tr>
+<tr class="row-even"><td><p>void</p></td>
+<td><p><a class="reference internal" href="#api-texture-4d267c1e"><span class="std std-ref">setDirty</span></a> ()</p></td>
+</tr>
+<tr class="row-odd"><td><p>void</p></td>
+<td><p><a class="reference internal" href="#api-texture-ae306128"><span class="std std-ref">setFiltering</span></a> (int  type)</p></td>
+</tr>
+<tr class="row-even"><td><p>void</p></td>
+<td><p><a class="reference internal" href="#api-texture-ac14760f"><span class="std std-ref">setFlags</span></a> (int  flags)</p></td>
+</tr>
+<tr class="row-odd"><td><p>void</p></td>
+<td><p><a class="reference internal" href="#api-texture-402763b9"><span class="std std-ref">setFormat</span></a> (int  type)</p></td>
+</tr>
+<tr class="row-even"><td><p>void</p></td>
+<td><p><a class="reference internal" href="#api-texture-290ab8d3"><span class="std std-ref">setHeight</span></a> (int  height)</p></td>
+</tr>
+<tr class="row-odd"><td><p>void</p></td>
+<td><p><a class="reference internal" href="#api-texture-ac7f1e46"><span class="std std-ref">setWidth</span></a> (int  width)</p></td>
+</tr>
+<tr class="row-even"><td><p>void</p></td>
+<td><p><a class="reference internal" href="#api-texture-d6cb8531"><span class="std std-ref">setWrap</span></a> (int  type)</p></td>
+</tr>
+<tr class="row-odd"><td><p>int</p></td>
+<td><p><a class="reference internal" href="#api-texture-8df5021e"><span class="std std-ref">sides</span></a> () const</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="xref std std-ref">Texture::Surface</span> &amp;</p></td>
+<td><p><a class="reference internal" href="#api-texture-a492d7eb"><span class="std std-ref">surface</span></a> (int  side)</p></td>
+</tr>
+<tr class="row-odd"><td><p>int</p></td>
+<td><p><a class="reference internal" href="#api-texture-1250c467"><span class="std std-ref">width</span></a> () const</p></td>
+</tr>
+<tr class="row-even"><td><p>int</p></td>
+<td><p><a class="reference internal" href="#api-texture-17643cda"><span class="std std-ref">wrap</span></a> () const</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="public-enums">
+<span id="api-texture-enums"></span><h2>Public Enums<a class="headerlink" href="#public-enums" title="Ссылка на этот заголовок">¶</a></h2>
+<p id="api-texture-filteringtype"><strong>enum Texture::FilteringType</strong></p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Constant</p></td>
+<td><p>Value</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>Texture::None</p></td>
+<td><p>0</p></td>
+<td><p>Texture samples draw as is.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Texture::Bilinear</p></td>
+<td><p>1</p></td>
+<td><p>Texture samples are averaged.</p></td>
+</tr>
+<tr class="row-even"><td><p>Texture::Trilinear</p></td>
+<td><p>2</p></td>
+<td><p>Texture samples are averaged and also interpolated from adjacent mipmap levels.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p id="api-texture-flags"><strong>enum Texture::Flags</strong></p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Constant</p></td>
+<td><p>Value</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>Texture::Render</p></td>
+<td><p>(1&lt;&lt;0)</p></td>
+<td><p>This texture is used as render target in frame buffers.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Texture::Feedback</p></td>
+<td><p>(1&lt;&lt;1)</p></td>
+<td><p>The feedback textures can read data from GPU to CPU.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p id="api-texture-formattype"><strong>enum Texture::FormatType</strong></p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Constant</p></td>
+<td><p>Value</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>Texture::R8</p></td>
+<td><p>0</p></td>
+<td><p>Single channel(Red) texture. 8-bit integer</p></td>
+</tr>
+<tr class="row-odd"><td><p>Texture::RGB8</p></td>
+<td><p>1</p></td>
+<td><p>Color texture format. 8 bit integer per channel. 24-bits in total.</p></td>
+</tr>
+<tr class="row-even"><td><p>Texture::RGBA8</p></td>
+<td><p>2</p></td>
+<td><p>Color texture format with alpha channel. 8-bit integer per channel. 32-bits in total.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Texture::RGB10A2</p></td>
+<td><p>3</p></td>
+<td><p>10 bits each for RGB, 2 for Alpha.</p></td>
+</tr>
+<tr class="row-even"><td><p>Texture::R11G11B10Float</p></td>
+<td><p>4</p></td>
+<td><p>This uses special 11 and 10-bit floating-point values. This is very economical for floating-point values (using only 32-bits per value).</p></td>
+</tr>
+<tr class="row-odd"><td><p>Texture::RGBA32Float</p></td>
+<td><p>5</p></td>
+<td><p>Color texture and alpha with floating-point values. It uses 32-bit floating-point values per channel.</p></td>
+</tr>
+<tr class="row-even"><td><p>Texture::RGBA16Float</p></td>
+<td><p>6</p></td>
+<td><p>Color texture and alpha with floating-point values. It uses 16-bit floating-point values per channel.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Texture::Depth</p></td>
+<td><p>7</p></td>
+<td><p>Depth buffer texture format. Number bits per pixel depend on graphical settings and hardware. Can be 16, 24 or 32-bit per pixel.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p id="api-texture-wraptype"><strong>enum Texture::WrapType</strong></p>
+<p>Wrap mode for textures.</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Constant</p></td>
+<td><p>Value</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>Texture::Clamp</p></td>
+<td><p>0</p></td>
+<td><p>Clamps the texture to the last pixel at the edge.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Texture::Repeat</p></td>
+<td><p>1</p></td>
+<td><p>Tiles the texture, creating a repeating pattern.</p></td>
+</tr>
+<tr class="row-even"><td><p>Texture::Mirrored</p></td>
+<td><p>2</p></td>
+<td><p>Tiles the texture, creating a repeating pattern by mirroring it at every integer boundary.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="static-methods">
+<span id="api-texture-static"></span><h2>Static Methods<a class="headerlink" href="#static-methods" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>uint32_t</p></td>
+<td><p><a class="reference internal" href="#api-texture-754b01f3"><span class="std std-ref">maxCubemapSize</span></a> ()</p></td>
+</tr>
+<tr class="row-even"><td><p>uint32_t</p></td>
+<td><p><a class="reference internal" href="#api-texture-53c8071b"><span class="std std-ref">maxTextureSize</span></a> ()</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="methods-description">
+<span id="api-texture-methods"></span><h2>Methods Description<a class="headerlink" href="#methods-description" title="Ссылка на этот заголовок">¶</a></h2>
+<blockquote id="api-texture-ac792b81">
+<div><p>void <strong>Texture::addSurface</strong> (<span class="xref std std-ref">Texture::Surface</span> &amp; <em>surface</em>)</p>
+</div></blockquote>
+<p>Adds <em>surface</em> to the texture. Each texture must contain at least one surface.</p>
+<hr class="docutils" />
+<blockquote id="api-texture-1ed27890">
+<div><p>int <strong>Texture::depth</strong> () const</p>
+</div></blockquote>
+<p>Returns depth dimension for the texture.</p>
+<p><strong>See also</strong> setDepth().</p>
+<hr class="docutils" />
+<blockquote id="api-texture-b18ed63a">
+<div><p>int <strong>Texture::depthBits</strong> () const</p>
+</div></blockquote>
+<p>Returns the number of depth buffer bits.</p>
+<p><strong>Note:</strong> This value is valid only for the depth textures.</p>
+<p><strong>See also</strong> setDepthBits().</p>
+<hr class="docutils" />
+<blockquote id="api-texture-c6853014">
+<div><p>int <strong>Texture::filtering</strong> () const</p>
+</div></blockquote>
+<p>Returns filtering type of texture. For more details please see the Texture::FilteringType enum.</p>
+<p><strong>See also</strong> setFiltering().</p>
+<hr class="docutils" />
+<blockquote id="api-texture-04fde293">
+<div><p>int <strong>Texture::flags</strong> () const</p>
+</div></blockquote>
+<p>Returns service flags for the texture.</p>
+<p><strong>See also</strong> setFlags() and Texture::Flags.</p>
+<hr class="docutils" />
+<blockquote id="api-texture-4b8e7d59">
+<div><p>int <strong>Texture::format</strong> () const</p>
+</div></blockquote>
+<p>Returns format type of texture. For more details please see the Texture::FormatType enum.</p>
+<p><strong>See also</strong> setFormat().</p>
+<hr class="docutils" />
+<blockquote id="api-texture-cfb962d8">
+<div><p>int <strong>Texture::getPixel</strong> (int  <em>x</em>, int  <em>y</em>, int  <em>level</em>) const</p>
+</div></blockquote>
+<p>Returns pixel color from mip <em>level</em> at <em>x</em> and <em>y</em> position as RGBA integer for example 0x00ff00ff which can be mapped to (0, 255, 0, 255)</p>
+<hr class="docutils" />
+<blockquote id="api-texture-536710bc">
+<div><p>ByteArray <strong>Texture::getPixels</strong> (int  <em>level</em>) const</p>
+</div></blockquote>
+<p>Returns texture data from a mip level.</p>
+<hr class="docutils" />
+<blockquote id="api-texture-67129ebc">
+<div><p>int <strong>Texture::height</strong> () const</p>
+</div></blockquote>
+<p>Returns height for the texture.</p>
+<p><strong>See also</strong> setHeight().</p>
+<hr class="docutils" />
+<blockquote id="api-texture-b39f207e">
+<div><p>bool <strong>Texture::isArray</strong> () const</p>
+</div></blockquote>
+<p>Returns true if texture provides a set of textures; otherwise returns false.</p>
+<p><strong>Note:</strong> For now will always return false.</p>
+<hr class="docutils" />
+<blockquote id="api-texture-3c07f51d">
+<div><p>bool <strong>Texture::isCubemap</strong> () const</p>
+</div></blockquote>
+<p>Returns true if the texture is a cube map; otherwise returns false.</p>
+<hr class="docutils" />
+<blockquote id="api-texture-a634c52b">
+<div><p>bool <strong>Texture::isFeedback</strong> () const</p>
+</div></blockquote>
+<p>Returns true if texture marked as a feed back texture; otherwise returns false. The feedback textures can read data from GPU to CPU.</p>
+<hr class="docutils" />
+<blockquote id="api-texture-e48069ad">
+<div><p>bool <strong>Texture::isRender</strong> () const</p>
+</div></blockquote>
+<p>Returns true if texture is can be attached to framebuffer; otherwise returns false.</p>
+<hr class="docutils" />
+<blockquote id="api-texture-754b01f3">
+<div><p>uint32_t <strong>Texture::maxCubemapSize</strong> ()</p>
+</div></blockquote>
+<p>Returns the maximum cubemap size.</p>
+<hr class="docutils" />
+<blockquote id="api-texture-53c8071b">
+<div><p>uint32_t <strong>Texture::maxTextureSize</strong> ()</p>
+</div></blockquote>
+<p>Returns the maximum texure size.</p>
+<hr class="docutils" />
+<blockquote id="api-texture-f750a612">
+<div><p>int <strong>Texture::mipCount</strong> () const</p>
+</div></blockquote>
+<p>Returns the number of MIP levels.</p>
+<hr class="docutils" />
+<blockquote id="api-texture-72c5ea94">
+<div><p>void <strong>Texture::readPixels</strong> (int  <em>x</em>, int  <em>y</em>, int  <em>width</em>, int  <em>height</em>)</p>
+</div></blockquote>
+<p>Read pixels from GPU at <em>x</em> and <em>y</em> position with <em>width</em> and <em>height</em> dimensions into texture data.</p>
+<hr class="docutils" />
+<blockquote id="api-texture-c562f98b">
+<div><p>void <strong>Texture::resize</strong> (int  <em>width</em>, int  <em>height</em>)</p>
+</div></blockquote>
+<p>Sets new <em>width</em> and <em>height</em> for the texture.</p>
+<hr class="docutils" />
+<blockquote id="api-texture-0d861cf3">
+<div><p>void <strong>Texture::setCompress</strong> (int  <em>method</em>)</p>
+</div></blockquote>
+<p>Set the compression method.</p>
+<hr class="docutils" />
+<blockquote id="api-texture-ce08bd13">
+<div><p>void <strong>Texture::setDepth</strong> (int  <em>depth</em>)</p>
+</div></blockquote>
+<p>Sets new <em>depth</em> dimension for the texture.</p>
+<p><strong>See also</strong> depth().</p>
+<hr class="docutils" />
+<blockquote id="api-texture-1b2e94d7">
+<div><p>void <strong>Texture::setDepthBits</strong> (int  <em>depth</em>)</p>
+</div></blockquote>
+<p>Sets the number of <em>depth</em> buffer bits.</p>
+<p><strong>Note:</strong> This value is valid only for the <em>depth</em> textures.</p>
+<p><strong>See also</strong> depthBits().</p>
+<hr class="docutils" />
+<blockquote id="api-texture-4d267c1e">
+<div><p>void <strong>Texture::setDirty</strong> ()</p>
+</div></blockquote>
+<p>Marks texture as dirty. That means this texture must be forcefully reloaded.</p>
+<hr class="docutils" />
+<blockquote id="api-texture-ae306128">
+<div><p>void <strong>Texture::setFiltering</strong> (int  <em>type</em>)</p>
+</div></blockquote>
+<p>Sets filtering <em>type</em> of texture. For more details please see the Texture::FilteringType enum.</p>
+<p><strong>See also</strong> filtering().</p>
+<hr class="docutils" />
+<blockquote id="api-texture-ac14760f">
+<div><p>void <strong>Texture::setFlags</strong> (int  <em>flags</em>)</p>
+</div></blockquote>
+<p>Sets service <em>flags</em> for the texture.</p>
+<p><strong>See also</strong> flags() and Texture::Flags.</p>
+<hr class="docutils" />
+<blockquote id="api-texture-402763b9">
+<div><p>void <strong>Texture::setFormat</strong> (int  <em>type</em>)</p>
+</div></blockquote>
+<p>Sets format <em>type</em> of texture. For more details please see the Texture::FormatType enum.</p>
+<p><strong>See also</strong> format().</p>
+<hr class="docutils" />
+<blockquote id="api-texture-290ab8d3">
+<div><p>void <strong>Texture::setHeight</strong> (int  <em>height</em>)</p>
+</div></blockquote>
+<p>Sets new <em>height</em> for the texture.</p>
+<p><strong>See also</strong> height().</p>
+<hr class="docutils" />
+<blockquote id="api-texture-ac7f1e46">
+<div><p>void <strong>Texture::setWidth</strong> (int  <em>width</em>)</p>
+</div></blockquote>
+<p>Sets new <em>width</em> for the texture.</p>
+<p><strong>See also</strong> width().</p>
+<hr class="docutils" />
+<blockquote id="api-texture-d6cb8531">
+<div><p>void <strong>Texture::setWrap</strong> (int  <em>type</em>)</p>
+</div></blockquote>
+<p>Sets the <em>type</em> of warp policy. For more details please see the Texture::WrapType enum.</p>
+<p><strong>See also</strong> wrap().</p>
+<hr class="docutils" />
+<blockquote id="api-texture-8df5021e">
+<div><p>int <strong>Texture::sides</strong> () const</p>
+</div></blockquote>
+<p>Returns the number of texture sides. In most cases returns 1 but for the cube map will return 6</p>
+<hr class="docutils" />
+<blockquote id="api-texture-a492d7eb">
+<div><p><span class="xref std std-ref">Texture::Surface</span> &amp; <strong>Texture::surface</strong> (int  <em>side</em>)</p>
+</div></blockquote>
+<p>Returns a surface for the provided side. Each texture must contain at least one surface. Commonly used to set surfaces for the cube maps.</p>
+<hr class="docutils" />
+<blockquote id="api-texture-1250c467">
+<div><p>int <strong>Texture::width</strong> () const</p>
+</div></blockquote>
+<p>Returns width for the texture.</p>
+<p><strong>See also</strong> setWidth().</p>
+<hr class="docutils" />
+<blockquote id="api-texture-17643cda">
+<div><p>int <strong>Texture::wrap</strong> () const</p>
+</div></blockquote>
+<p>Returns the type of warp policy. For more details please see the Texture::WrapType enum.</p>
+<p><strong>See also</strong> setWrap().</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="tilemap.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">TileMap</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="text.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Text</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, Thunder Engine
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Texture</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#public-methods">Public Methods</a></li>
+<li><a class="reference internal" href="#public-enums">Public Enums</a></li>
+<li><a class="reference internal" href="#static-methods">Static Methods</a></li>
+<li><a class="reference internal" href="#methods-description">Methods Description</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=372fde1a"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../_static/translations.js?v=9bfe3ffa"></script>
+    </body>
+</html>
