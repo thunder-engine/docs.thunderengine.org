@@ -1,0 +1,658 @@
+<!doctype html>
+<html class="no-js" lang="ru" data-content_root="/ru/">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Алфавитный указатель" href="/ru/genindex.html"><link rel="search" title="Поиск" href="/ru/search.html"><link rel="next" title="Модуль ресурсов" href="/ru/reference/resources-module.html"><link rel="prev" title="ProcessEnvironment" href="/ru/reference/processenvironment.html">
+
+    <!-- Generated with Sphinx 7.4.7 and Furo 2025.12.19 -->
+        <title>Uuid - документация Thunder Engine</title>
+      <link rel="stylesheet" type="text/css" href="/ru/_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="/ru/_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="/ru/_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="/ru/_static/styles/furo-extensions.css?v=8dab3a3b" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+<div class="announcement">
+  <aside class="announcement-content">
+     🌐 <a href="/en/reference/uuid.html">English</a> | <span style="opacity:.55" aria-current="page">Русский</span> 
+  </aside>
+</div>
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="/ru/index.html"><div class="brand">документация Thunder Engine </div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="/ru/index.html">
+  
+  <span class="sidebar-brand-text">документация Thunder Engine </span>
+  
+</a><form class="sidebar-search-container" method="get" action="/ru/search.html" role="search">
+  <input class="sidebar-search" placeholder="Поиск" name="q" aria-label="Поиск">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Thunder Engine</span></p>
+<ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="/ru/basics/index.html">Начало работы</a><input aria-label="Toggle navigation of Начало работы" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="/ru/basics/quick_start.html">Быстрый старт</a></li>
+<li class="toctree-l2"><a class="reference internal" href="/ru/basics/thunder_hub.html">Thunder Hub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="/ru/basics/sample_projects.html">Примеры проектов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="/ru/basics/features.html">Возможности Thunder Engine</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="/ru/editor/index.html">Редактор</a><input aria-label="Toggle navigation of Редактор" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="/ru/editor/viewport.html">Область просмотра</a></li>
+<li class="toctree-l2"><a class="reference internal" href="/ru/editor/properties.html">Свойства</a></li>
+<li class="toctree-l2"><a class="reference internal" href="/ru/editor/content.html">Обозреватель контента</a></li>
+<li class="toctree-l2"><a class="reference internal" href="/ru/editor/hierarchy.html">Иерархия</a></li>
+<li class="toctree-l2"><a class="reference internal" href="/ru/editor/plugins.html">Менеджер плагинов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="/ru/editor/builder.html">Сборка проекта</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="/ru/rendering/index.html">Рендеринг</a><input aria-label="Toggle navigation of Рендеринг" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="/ru/rendering/components/camera.html">Камера</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="/ru/rendering/geometry/index.html">Геометрия</a><input aria-label="Toggle navigation of Геометрия" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="/ru/rendering/geometry/mesh.html">Mesh Resource</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/rendering/geometry/meshrender.html">MeshRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/rendering/geometry/skinnedmeshrender.html">SkinnedMeshRender</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="/ru/rendering/lighting/index.html">Освещение</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="/ru/rendering/vfx/index.html">Визуальные эффекты (VFX)</a><input aria-label="Toggle navigation of Визуальные эффекты (VFX)" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="/ru/rendering/vfx/editor.html">Редактор VFX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/rendering/vfx/custom_modules.html">Создание пользовательских модулей</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="/ru/rendering/pipeline.html">Графический конвейер</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="/ru/audio/index.html">Аудио</a><input aria-label="Toggle navigation of Аудио" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="/ru/audio/resources/audioclip.html">AudioClip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="/ru/audio/components/audiosource.html">AudioSource</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="/ru/scripting/index.html">Скриптинг</a><input aria-label="Toggle navigation of Скриптинг" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="/ru/scripting/overview.html">Обзор</a></li>
+<li class="toctree-l2"><a class="reference internal" href="/ru/scripting/creating_scripts.html">Создание и использование скриптов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="/ru/scripting/exporting_variables.html">Переменные и редактор свойств</a></li>
+<li class="toctree-l2"><a class="reference internal" href="/ru/scripting/instantiating_prefabs.html">Создание экземпляров префабов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="/ru/scripting/native_introspection.html">Нативная интроспекция</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="/ru/reference/index.html">Справочник API</a><input aria-label="Toggle navigation of Справочник API" checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="/ru/reference/animation-module.html">Модуль анимации</a><input aria-label="Toggle navigation of Модуль анимации" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/animation.html">Animation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/propertyanimation.html">PropertyAnimation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/variantanimation.html">VariantAnimation</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="/ru/reference/bullet-module.html">Модуль Bullet</a><input aria-label="Toggle navigation of Модуль Bullet" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/boxcollider.html">BoxCollider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/capsulecollider.html">CapsuleCollider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/charactercontroller.html">CharacterController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/collider.html">Collider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/meshcollider.html">MeshCollider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/physicmaterial.html">PhysicMaterial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/rigidbody.html">RigidBody</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/spherecollider.html">SphereCollider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/volumecollider.html">VolumeCollider</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="/ru/reference/components-module.html">Модуль компонентов</a><input aria-label="Toggle navigation of Модуль компонентов" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/actor.html">Actor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/animator.html">Animator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/arealight.html">AreaLight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/armature.html">Armature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/baselight.html">BaseLight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/camera.html">Camera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/component.html">Component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/directlight.html">DirectLight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/effectrender.html">EffectRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/fixedjoint.html">FixedJoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/hingejoint.html">HingeJoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/joint.html">Joint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/meshrender.html">MeshRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/nativebehaviour.html">NativeBehaviour</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/playerinput.html">PlayerInput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/pointlight.html">PointLight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/postprocessvolume.html">PostProcessVolume</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/renderable.html">Renderable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/scene.html">Scene</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/skinnedmeshrender.html">SkinnedMeshRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/skinnedspriterender.html">SkinnedSpriteRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/spline.html">Spline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/spotlight.html">SpotLight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/springjoint.html">SpringJoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/spriterender.html">SpriteRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/textrender.html">TextRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/tilemaprender.html">TileMapRender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/transform.html">Transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/world.html">World</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="/ru/reference/core-module.html">Модуль Core</a><input aria-label="Toggle navigation of Модуль Core" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/bson.html">Bson</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/event.html">Event</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/json.html">Json</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/metaenum.html">MetaEnum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/metamethod.html">MetaMethod</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/metaobject.html">MetaObject</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/metaproperty.html">MetaProperty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/metatype.html">MetaType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/methodcallevent.html">MethodCallEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/object.html">Object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/objectsystem.html">ObjectSystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/tstring.html">TString</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/threadpool.html">ThreadPool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/url.html">Url</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/variant.html">Variant</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="/ru/reference/engine-module.html">Модуль Engine</a><input aria-label="Toggle navigation of Модуль Engine" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/commandbuffer.html">CommandBuffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/engine.html">Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/gizmos.html">Gizmos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/input.html">Input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/log.html">Log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/module.html">Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/pipelinecontext.html">PipelineContext</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/pipelinetask.html">PipelineTask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/system.html">System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/timer.html">Timer</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="/ru/reference/gui-module.html">Модуль GUI</a><input aria-label="Toggle navigation of Модуль GUI" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/abstractbutton.html">AbstractButton</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/abstractslider.html">AbstractSlider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/button.html">Button</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/canvas.html">Canvas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/checkbox.html">CheckBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/floatinput.html">FloatInput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/foldout.html">Foldout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/frame.html">Frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/image.html">Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/label.html">Label</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/layout.html">Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/lineedit.html">LineEdit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/menu.html">Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/progressbar.html">ProgressBar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/recttransform.html">RectTransform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/scrollbar.html">ScrollBar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/slider.html">Slider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/splitter.html">Splitter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/stylesheet.html">StyleSheet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/switch.html">Switch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/tabbar.html">TabBar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/tabwidget.html">TabWidget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/toolbutton.html">ToolButton</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/uidocument.html">UiDocument</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/uiloader.html">UiLoader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/widget.html">Widget</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="/ru/reference/math-module.html">Модуль Math</a><input aria-label="Toggle navigation of Модуль Math" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/aabbox.html">AABBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/matrix3.html">Matrix3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/matrix4.html">Matrix4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/obbox.html">OBBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/plane.html">Plane</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/quaternion.html">Quaternion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/ray.html">Ray</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/vector2.html">Vector2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/vector3.html">Vector3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/vector4.html">Vector4</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="/ru/reference/media-module.html">Модуль Media</a><input aria-label="Toggle navigation of Модуль Media" class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/audioclip.html">AudioClip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/audiosource.html">AudioSource</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="/ru/reference/navigation-module.html">Модуль навигации</a><input aria-label="Toggle navigation of Модуль навигации" class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" role="switch" type="checkbox"/><label for="toctree-checkbox-17"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/navmesh.html">NavMesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/navmeshagent.html">NavMeshAgent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/navmeshlink.html">NavMeshLink</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/navmeshobstacle.html">NavMeshObstacle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/navmeshsurface.html">NavMeshSurface</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="/ru/reference/os-module.html">Модуль Os</a><input aria-label="Toggle navigation of Модуль Os" checked="" class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" role="switch" type="checkbox"/><label for="toctree-checkbox-18"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/backtrace.html">Backtrace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/filesystemwatcher.html">FileSystemWatcher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/process.html">Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/processenvironment.html">ProcessEnvironment</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Uuid</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="/ru/reference/resources-module.html">Модуль ресурсов</a><input aria-label="Toggle navigation of Модуль ресурсов" class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" role="switch" type="checkbox"/><label for="toctree-checkbox-19"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/animationclip.html">AnimationClip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/animationstatemachine.html">AnimationStateMachine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/animationtrack.html">AnimationTrack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/bone.html">Bone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/computebuffer.html">ComputeBuffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/computeinstance.html">ComputeInstance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/computeshader.html">ComputeShader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/controlscheme.html">ControlScheme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/font.html">Font</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/map.html">Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/material.html">Material</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/materialinstance.html">MaterialInstance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/mesh.html">Mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/pipeline.html">Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/pose.html">Pose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/prefab.html">Prefab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/rendertarget.html">RenderTarget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/resource.html">Resource</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/sprite.html">Sprite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/text.html">Text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/texture.html">Texture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/tilemap.html">TileMap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/tileset.html">TileSet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/translator.html">Translator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="/ru/reference/visualeffect.html">VisualEffect</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="/ru/reference/networkaddress.html">NetworkAddress</a></li>
+<li class="toctree-l2"><a class="reference internal" href="/ru/reference/webrequest.html">WebRequest</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Принять участие</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="/ru/involved/index.html">Внести вклад в документацию</a><input aria-label="Toggle navigation of Внести вклад в документацию" class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="/ru/involved/documentation_guide.html">Руководство по написанию документации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="/ru/involved/style_guide.html">Documentation Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="/ru/involved/review_process.html">Процесс рецензирования документации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="/ru/involved/build_from_source.html">Сборка Thunder Engine из исходников</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="/ru/involved/localization.html">Локализация документации</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="/ru/_sources/reference/uuid.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="uuid">
+<span id="api-uuid"></span><h1>Uuid<a class="headerlink" href="#uuid" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Наследует: None</p>
+<section id="description">
+<span id="api-uuid-description"></span><h2>Описание<a class="headerlink" href="#description" title="Ссылка на этот заголовок">¶</a></h2>
+<p><cite>Uuid</cite> представляет 128-битный UUID (совместимый с RFC 4122). Он предоставляет утилиты для создания случайных (версия 4) UUID, преобразования в строковые и байтовые представления и обратно, а также базовые операторы сравнения.</p>
+</section>
+<section id="public-methods">
+<span id="api-uuid-public"></span><h2>Публичные методы<a class="headerlink" href="#public-methods" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td></td>
+<td><p><a class="reference internal" href="#api-uuid-cbda358f"><span class="std std-ref">Uuid</span></a> ()</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p><a class="reference internal" href="#api-uuid-e6a7f2bd"><span class="std std-ref">Uuid</span></a> (const TString &amp; uuid)</p></td>
+</tr>
+<tr class="row-odd"><td><p>void</p></td>
+<td><p><a class="reference internal" href="#api-uuid-071ea68c"><span class="std std-ref">fromByteArray</span></a> (const ByteArray &amp; array)</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p><a class="reference internal" href="#api-uuid-8efcb560"><span class="std std-ref">isNull</span></a> () const</p></td>
+</tr>
+<tr class="row-odd"><td><p>ByteArray</p></td>
+<td><p><a class="reference internal" href="#api-uuid-8d017639"><span class="std std-ref">toByteArray</span></a> () const</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="/ru/reference/tstring.html#api-tstring"><span class="std std-ref">TString</span></a></p></td>
+<td><p><a class="reference internal" href="#api-uuid-47abde98"><span class="std std-ref">toString</span></a> () const</p></td>
+</tr>
+<tr class="row-odd"><td><p>bool</p></td>
+<td><p><a class="reference internal" href="#api-uuid-1f405c27"><span class="std std-ref">operator!=</span></a> (const Uuid &amp; other) const</p></td>
+</tr>
+<tr class="row-even"><td><p>bool</p></td>
+<td><p><a class="reference internal" href="#api-uuid-92e6103f"><span class="std std-ref">operator&lt;</span></a> (const Uuid &amp; other) const</p></td>
+</tr>
+<tr class="row-odd"><td><p>bool</p></td>
+<td><p><a class="reference internal" href="#api-uuid-76f2543c"><span class="std std-ref">operator==</span></a> (const Uuid &amp; other) const</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="static-methods">
+<span id="api-uuid-static"></span><h2>Статические методы<a class="headerlink" href="#static-methods" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#api-uuid"><span class="std std-ref">Uuid</span></a></p></td>
+<td><p><a class="reference internal" href="#api-uuid-90247b1f"><span class="std std-ref">createUuid</span></a> ()</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="methods-description">
+<span id="api-uuid-methods"></span><h2>Описание методов<a class="headerlink" href="#methods-description" title="Ссылка на этот заголовок">¶</a></h2>
+<p id="api-uuid-cbda358f"><strong>Uuid::Uuid</strong> ()</p>
+<p>Внутреннее 16-байтовое значение инициализируется нулями.</p>
+<hr class="docutils" />
+<p id="api-uuid-e6a7f2bd"><strong>Uuid::Uuid</strong> (<a class="reference internal" href="/ru/reference/tstring.html#api-tstring"><span class="std std-ref">TString</span></a> &amp; <em>uuid</em>)</p>
+<p>Создаёт <em>uuid</em> из его текстового представления.</p>
+<p>Принимает обычные форматы UUID со скобками и дефисами или без них (например: <cite>{550e8400-e29b-41d4-a716-446655440000}</cite> или <cite>550e8400e29b41d4a716446655440000</cite>). Не-hex-символы, кроме разделителей, игнорируются. Если входные данные содержат менее 16 байт, оставшиеся байты остаются нулевыми.</p>
+<hr class="docutils" />
+<blockquote id="api-uuid-90247b1f">
+<div><p><a class="reference internal" href="#api-uuid"><span class="std std-ref">Uuid</span></a>  <strong>Uuid::createUuid</strong> ()</p>
+</div></blockquote>
+<p>Генерирует случайный (версия 4) UUID.</p>
+<p>Использует C++ random device и генератор Mersenne Twister для создания 16 случайных байт. Устанавливает биты версии и варианта в соответствии с RFC 4122.</p>
+<hr class="docutils" />
+<blockquote id="api-uuid-071ea68c">
+<div><p>void <strong>Uuid::fromByteArray</strong> (ByteArray &amp; <em>array</em>)</p>
+</div></blockquote>
+<p>Загружает байты UUID из 16-байтового ByteArray.</p>
+<p>Предоставленный <em>array</em> должен содержать не менее 16 байт.</p>
+<hr class="docutils" />
+<blockquote id="api-uuid-8efcb560">
+<div><p>bool <strong>Uuid::isNull</strong> () const</p>
+</div></blockquote>
+<p>Возвращает true, если UUID является нулевым (все байты нулевые).</p>
+<hr class="docutils" />
+<blockquote id="api-uuid-8d017639">
+<div><p>ByteArray <strong>Uuid::toByteArray</strong> () const</p>
+</div></blockquote>
+<p>Преобразует UUID в 16-байтовый ByteArray.</p>
+<hr class="docutils" />
+<blockquote id="api-uuid-47abde98">
+<div><p><a class="reference internal" href="/ru/reference/tstring.html#api-tstring"><span class="std std-ref">TString</span></a>  <strong>Uuid::toString</strong> () const</p>
+</div></blockquote>
+<p>Возвращает каноническое строковое представление UUID.</p>
+<p>Возвращаемая строка форматируется со скобками и дефисами, например <cite>{550e8400-e29b-41d4-a716-446655440000}</cite>.</p>
+<hr class="docutils" />
+<blockquote id="api-uuid-1f405c27">
+<div><p>bool <strong>Uuid::operator!=</strong> (<a class="reference internal" href="#api-uuid"><span class="std std-ref">Uuid</span></a> &amp; <em>other</em>) const</p>
+</div></blockquote>
+<p>Сравнение на неравенство с <em>other</em> UUID. Возвращает true, если UUID различаются; иначе возвращает false.</p>
+<hr class="docutils" />
+<blockquote id="api-uuid-92e6103f">
+<div><p>bool <strong>Uuid::operator&lt;</strong> (<a class="reference internal" href="#api-uuid"><span class="std std-ref">Uuid</span></a> &amp; <em>other</em>) const</p>
+</div></blockquote>
+<p>Упорядочивание с <em>other</em> UUID (лексикографически по байтам). Возвращает true, если этот UUID лексикографически меньше other; иначе возвращает false.</p>
+<hr class="docutils" />
+<blockquote id="api-uuid-76f2543c">
+<div><p>bool <strong>Uuid::operator==</strong> (<a class="reference internal" href="#api-uuid"><span class="std std-ref">Uuid</span></a> &amp; <em>other</em>) const</p>
+</div></blockquote>
+<p>Сравнение на равенство с <em>other</em> UUID. Возвращает true, если UUID равны; иначе возвращает false.</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="/ru/reference/resources-module.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Модуль ресурсов</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="/ru/reference/processenvironment.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">ProcessEnvironment</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, Thunder Engine
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Uuid</a><ul>
+<li><a class="reference internal" href="#description">Описание</a></li>
+<li><a class="reference internal" href="#public-methods">Публичные методы</a></li>
+<li><a class="reference internal" href="#static-methods">Статические методы</a></li>
+<li><a class="reference internal" href="#methods-description">Описание методов</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="/ru/_static/documentation_options.js?v=372fde1a"></script>
+    <script src="/ru/_static/doctools.js?v=9a2dae69"></script>
+    <script src="/ru/_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="/ru/_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="/ru/_static/translations.js?v=9bfe3ffa"></script>
+    </body>
+</html>

@@ -16,7 +16,7 @@ The Camera component is the foundation of Thunder Engine's visual system. It tra
 - **Background color** — the color used to fill the screen before rendering
 
 .. note::
-    Multiple cameras can exist in a scene, but only one can be active at a time. The active camera is set via ``Engine::setMainCamera()``.
+    Multiple cameras can exist in a scene, but only one can be active at a time. The active camera is set via ``Camera::setCurrent()``.
 
 Component Properties
 --------------------

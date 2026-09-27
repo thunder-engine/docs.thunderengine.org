@@ -1,7 +1,7 @@
 .. _doc_interface:
 
-World Editor
-============
+Editor
+======
 
 When you create a new project or open an existing one, you will find yourself on the main screen.
 

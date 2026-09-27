@@ -80,7 +80,7 @@ const _displayItem = (item, searchTerms, highlightTerms) => {
   } else {
     // normal html builders
     requestUrl = contentRoot + docName + docFileSuffix;
-    linkUrl = docName + docLinkSuffix;
+    linkUrl = contentRoot + docName + docLinkSuffix;
   }
   let linkEl = listItem.appendChild(document.createElement("a"));
   linkEl.href = linkUrl + anchor;

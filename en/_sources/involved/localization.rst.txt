@@ -30,12 +30,12 @@ Project Structure
 .. code-block::
 
    thunder-doc/
-   ├── source/              # оригинальная документация (en)
+   ├── _build/              # generated HTML
+   ├── source/              # original documentation (en)
    │   ├── conf.py
    │   ├── index.rst
    │   └── ...
-   ├── _build/              # сгенерированные HTML
-   ├── locales/             # папка для файлов перевода
+   ├── locales/             # folder for translation files
    │   └── ru/LC_MESSAGES/
    └── make.bat
 
@@ -191,7 +191,7 @@ For editing ``.po`` files, it is recommended to use:
 *   **Poedit** (recommended for beginners)
     
     .. code-block:: bash
-	
+
         # Install on Ubuntu
         sudo apt install poedit
         
@@ -250,13 +250,13 @@ Before submitting a translation, verify:
 *   [ ] ``.po`` file syntax is correct:
 
     .. code-block:: bash
-	
+
         msgfmt --check locales/ru/LC_MESSAGES/*.po
 
 *   [ ] Documentation builds without errors:
 
     .. code-block:: bash
-	
+
         make clean
         make html-ru
 
@@ -386,11 +386,11 @@ Checklist for Adding a New Localization
 Useful Links
 ------------
 
-*   `Sphinx Internationalization Guide <https://www.sphinx-doc.org/en/master/usage/advanced/intl.html>`_
-*   `sphinx-intl Documentation <https://github.com/sphinx-doc/sphinx-intl>`_
-*   `Poedit Editor <https://poedit.net/>`_
-*   `GNU gettext Utilities <https://www.gnu.org/software/gettext/manual/>`_
-*   `GitHub Issues for Localization Discussion <https://github.com/thunder-engine/thunder-doc/issues>`_
+* `Sphinx Internationalization Guide <https://www.sphinx-doc.org/en/master/usage/advanced/intl.html>`_
+* `sphinx-intl Documentation <https://github.com/sphinx-doc/sphinx-intl>`_
+* `Poedit Editor <https://poedit.net/>`_
+* `GNU gettext Utilities <https://www.gnu.org/software/gettext/manual/>`_
+* `GitHub Issues for Localization Discussion <https://github.com/thunder-engine/thunder-doc/issues>`_
 
 How to Become a Translator
 --------------------------
